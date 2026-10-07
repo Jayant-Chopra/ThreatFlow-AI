@@ -1,0 +1,21 @@
+{
+  "name": "@threatflow/graph-engine",
+  "version": "1.0.0",
+  "description": "Attack Graph Traversal, Risk Scoring, and Chokepoint Remediation Engine for ThreatFlow AI",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node --test test/**/*.test.js",
+    "test:watch": "node --test --watch test/**/*.test.js"
+  },
+  "keywords": [
+    "attack-graph",
+    "dag",
+    "threatflow",
+    "appsec",
+    "risk-engine",
+    "chokepoint-remediation"
+  ],
+  "author": "Ravish Gupta <ravishgupta071@gmail.com>",
+  "license": "MIT",
+  "type": "commonjs"
+}
