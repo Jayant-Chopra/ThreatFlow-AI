@@ -1,0 +1,10 @@
+app.get('/users', getUsers);
+app.post('/users', createUser);
+router.get('/health', healthCheck);
+app.put('/users/:id', updateUser);
+app.delete('/users/:id', deleteUser);
+app.patch('/users/:id', patchUser);
+app.get('/anonymous', (req, res) => res.json({ ok: true }));
+router.post('/secured', authenticate, validateRequest, createUser);
+cache.get('session-id');
+app.get(routePrefix + '/dynamic', getUsers);

@@ -1,0 +1,10 @@
+const queryId = req.query.id;
+const bodyName = req.body.name;
+const paramId = req.params.id;
+const authorization = req.headers.authorization;
+const session = req.cookies.session;
+const bracketId = req.query["id"];
+const nested = format({ name: req.body.name });
+const ignored = payload.query.id;
+const first = req.params.first; const second = req.query["second"];
+const optionalId = req?.query?.id;

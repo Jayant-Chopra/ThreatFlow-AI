@@ -1,0 +1,191 @@
+{
+  "schemaVersion": "1.0",
+  "project": {
+    "name": "pipeline-vulnerable",
+    "path": "C:/workspace/pipeline-vulnerable"
+  },
+  "files": [
+    {
+      "path": "app.js",
+      "language": "JavaScript"
+    }
+  ],
+  "routes": [
+    {
+      "id": "route_001",
+      "method": "GET",
+      "path": "/users",
+      "file": "app.js",
+      "line": 11,
+      "handler": "handler"
+    }
+  ],
+  "functions": [
+    {
+      "id": "func_001",
+      "name": "handler",
+      "file": "app.js",
+      "line": 1
+    }
+  ],
+  "sources": [
+    {
+      "id": "source_001",
+      "type": "HTTP_INPUT",
+      "expression": "req.query.id",
+      "file": "app.js",
+      "line": 2
+    },
+    {
+      "id": "source_002",
+      "type": "HTTP_INPUT",
+      "expression": "req.body.command",
+      "file": "app.js",
+      "line": 5
+    },
+    {
+      "id": "source_003",
+      "type": "HTTP_INPUT",
+      "expression": "req.params.code",
+      "file": "app.js",
+      "line": 7
+    }
+  ],
+  "sinks": [
+    {
+      "id": "sink_001",
+      "type": "DATABASE",
+      "name": "db.query",
+      "file": "app.js",
+      "line": 4
+    },
+    {
+      "id": "sink_002",
+      "type": "COMMAND_EXECUTION",
+      "name": "exec",
+      "file": "app.js",
+      "line": 6
+    },
+    {
+      "id": "sink_003",
+      "type": "DANGEROUS_CODE_EXECUTION",
+      "name": "eval",
+      "file": "app.js",
+      "line": 8
+    }
+  ],
+  "variables": [
+    {
+      "id": "var_001",
+      "name": "id",
+      "file": "app.js",
+      "line": 2
+    },
+    {
+      "id": "var_002",
+      "name": "query",
+      "file": "app.js",
+      "line": 3
+    },
+    {
+      "id": "var_003",
+      "name": "command",
+      "file": "app.js",
+      "line": 5
+    },
+    {
+      "id": "var_004",
+      "name": "code",
+      "file": "app.js",
+      "line": 7
+    }
+  ],
+  "relationships": [
+    {
+      "from": "source_001",
+      "to": "var_001",
+      "type": "ASSIGNMENT"
+    },
+    {
+      "from": "var_001",
+      "to": "var_002",
+      "type": "VARIABLE_TO_VARIABLE"
+    },
+    {
+      "from": "var_002",
+      "to": "sink_001",
+      "type": "DATA_FLOW"
+    },
+    {
+      "from": "source_002",
+      "to": "var_003",
+      "type": "ASSIGNMENT"
+    },
+    {
+      "from": "var_003",
+      "to": "sink_002",
+      "type": "DATA_FLOW"
+    },
+    {
+      "from": "source_003",
+      "to": "var_004",
+      "type": "ASSIGNMENT"
+    },
+    {
+      "from": "var_004",
+      "to": "sink_003",
+      "type": "DATA_FLOW"
+    },
+    {
+      "from": "route_001",
+      "to": "func_001",
+      "type": "ROUTE_TO_FUNCTION"
+    }
+  ],
+  "findings": [
+    {
+      "id": "finding_001",
+      "type": "SQL_INJECTION",
+      "severity": "HIGH",
+      "title": "Potential SQL Injection",
+      "file": "app.js",
+      "line": 4,
+      "source": "req.query.id",
+      "sink": "db.query",
+      "route": "GET /users",
+      "evidence": "Tainted HTTP input reaches a database query through string concatenation."
+    },
+    {
+      "id": "finding_002",
+      "type": "COMMAND_INJECTION",
+      "severity": "HIGH",
+      "title": "Potential Command Injection",
+      "file": "app.js",
+      "line": 6,
+      "source": "req.body.command",
+      "sink": "exec",
+      "route": "GET /users",
+      "evidence": "Tainted HTTP input reaches exec through a tainted command argument."
+    },
+    {
+      "id": "finding_003",
+      "type": "CODE_EXECUTION",
+      "severity": "HIGH",
+      "title": "Potential Dangerous Code Execution",
+      "file": "app.js",
+      "line": 8,
+      "source": "req.params.code",
+      "sink": "eval",
+      "route": "GET /users",
+      "evidence": "Tainted HTTP input reaches eval as executable code."
+    }
+  ],
+  "summary": {
+    "filesAnalyzed": 1,
+    "routesFound": 1,
+    "functionsFound": 1,
+    "sourcesFound": 3,
+    "sinksFound": 3,
+    "findingsFound": 3
+  }
+}

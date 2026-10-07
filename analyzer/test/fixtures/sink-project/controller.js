@@ -1,0 +1,12 @@
+db.query('SELECT * FROM users');
+db.query('SELECT * FROM users WHERE id = ?', [id]);
+exec(command);
+execSync(command);
+spawn('ls', ['-la']);
+eval(code);
+Function('return 1;');
+new Function('name', 'return name;');
+logger.query('status message');
+utility.exec(task);
+connection.query('SELECT 1');
+spawnSync('node', ['--version']);

@@ -1,0 +1,19 @@
+{
+  "name": "threatflow-analyzer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ThreatFlow AI analyzer foundation",
+  "main": "scanner.js",
+  "scripts": {
+    "start": "node scanner.js",
+    "smoke": "node scanner.js ./test-project",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.26.7",
+    "@babel/traverse": "^7.26.7"
+  }
+}
