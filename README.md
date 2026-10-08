@@ -10,14 +10,5 @@ ThreatFlow AI is a vulnerability analysis and attack-path platform for JavaScrip
 - fixtures/: analyzer contract examples and expected output fixtures
 - docs/: project documentation and integration notes
 
-## Getting started
-
-For backend development:
-
-```bash
-cd backend
-npm install
-npm start
-```
 
 For analyzer or graph work, use the respective directories in this repo.
