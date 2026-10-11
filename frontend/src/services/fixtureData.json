@@ -1,0 +1,515 @@
+{
+  "schemaVersion": "1.0",
+  "project": {
+    "name": "test-project",
+    "path": "analyzer/test-project"
+  },
+  "files": [
+    {
+      "path": "app.js",
+      "language": "JavaScript"
+    },
+    {
+      "path": "controllers/userController.js",
+      "language": "JavaScript"
+    },
+    {
+      "path": "routes/userRoutes.js",
+      "language": "JavaScript"
+    },
+    {
+      "path": "safe/safeExamples.js",
+      "language": "JavaScript"
+    }
+  ],
+  "routes": [
+    {
+      "id": "route_001",
+      "method": "GET",
+      "path": "/users",
+      "file": "routes/userRoutes.js",
+      "line": 14,
+      "handler": "getUser"
+    },
+    {
+      "id": "route_002",
+      "method": "GET",
+      "path": "/diagnostic",
+      "file": "routes/userRoutes.js",
+      "line": 15,
+      "handler": "runDiagnostic"
+    },
+    {
+      "id": "route_003",
+      "method": "POST",
+      "path": "/execute",
+      "file": "routes/userRoutes.js",
+      "line": 16,
+      "handler": "executeCode"
+    },
+    {
+      "id": "route_004",
+      "method": "GET",
+      "path": "/safe/users",
+      "file": "routes/userRoutes.js",
+      "line": 17,
+      "handler": "safeLookup"
+    },
+    {
+      "id": "route_005",
+      "method": "GET",
+      "path": "/safe/command",
+      "file": "routes/userRoutes.js",
+      "line": 18,
+      "handler": "safeCommand"
+    },
+    {
+      "id": "route_006",
+      "method": "GET",
+      "path": "/safe/normal",
+      "file": "routes/userRoutes.js",
+      "line": 19,
+      "handler": "normalCalculation"
+    },
+    {
+      "id": "route_007",
+      "method": "GET",
+      "path": "/safe/unrelated",
+      "file": "routes/userRoutes.js",
+      "line": 20,
+      "handler": "unrelatedFunctionCall"
+    }
+  ],
+  "functions": [
+    {
+      "id": "func_001",
+      "name": "get",
+      "file": "app.js",
+      "line": 4
+    },
+    {
+      "id": "func_002",
+      "name": "post",
+      "file": "app.js",
+      "line": 7
+    },
+    {
+      "id": "func_003",
+      "name": "query",
+      "file": "controllers/userController.js",
+      "line": 2
+    },
+    {
+      "id": "func_004",
+      "name": "exec",
+      "file": "controllers/userController.js",
+      "line": 7
+    },
+    {
+      "id": "func_005",
+      "name": "getUser",
+      "file": "controllers/userController.js",
+      "line": 11
+    },
+    {
+      "id": "func_006",
+      "name": "runDiagnostic",
+      "file": "controllers/userController.js",
+      "line": 18
+    },
+    {
+      "id": "func_007",
+      "name": "executeCode",
+      "file": "controllers/userController.js",
+      "line": 25
+    },
+    {
+      "id": "func_008",
+      "name": "registerUserRoutes",
+      "file": "routes/userRoutes.js",
+      "line": 13
+    },
+    {
+      "id": "func_009",
+      "name": "query",
+      "file": "safe/safeExamples.js",
+      "line": 2
+    },
+    {
+      "id": "func_010",
+      "name": "exec",
+      "file": "safe/safeExamples.js",
+      "line": 7
+    },
+    {
+      "id": "func_011",
+      "name": "formatValue",
+      "file": "safe/safeExamples.js",
+      "line": 11
+    },
+    {
+      "id": "func_012",
+      "name": "safeLookup",
+      "file": "safe/safeExamples.js",
+      "line": 15
+    },
+    {
+      "id": "func_013",
+      "name": "safeCommand",
+      "file": "safe/safeExamples.js",
+      "line": 21
+    },
+    {
+      "id": "func_014",
+      "name": "unrelatedFunctionCall",
+      "file": "safe/safeExamples.js",
+      "line": 26
+    },
+    {
+      "id": "func_015",
+      "name": "normalCalculation",
+      "file": "safe/safeExamples.js",
+      "line": 32
+    }
+  ],
+  "sources": [
+    {
+      "id": "source_001",
+      "type": "HTTP_INPUT",
+      "expression": "req.query.id",
+      "file": "controllers/userController.js",
+      "line": 12
+    },
+    {
+      "id": "source_002",
+      "type": "HTTP_INPUT",
+      "expression": "req.query.host",
+      "file": "controllers/userController.js",
+      "line": 19
+    },
+    {
+      "id": "source_003",
+      "type": "HTTP_INPUT",
+      "expression": "req.body.code",
+      "file": "controllers/userController.js",
+      "line": 26
+    },
+    {
+      "id": "source_004",
+      "type": "HTTP_INPUT",
+      "expression": "req.query.id",
+      "file": "safe/safeExamples.js",
+      "line": 16
+    },
+    {
+      "id": "source_005",
+      "type": "HTTP_INPUT",
+      "expression": "req.query.label",
+      "file": "safe/safeExamples.js",
+      "line": 27
+    },
+    {
+      "id": "source_006",
+      "type": "HTTP_INPUT",
+      "expression": "req.query.value",
+      "file": "safe/safeExamples.js",
+      "line": 33
+    }
+  ],
+  "sinks": [
+    {
+      "id": "sink_001",
+      "type": "DATABASE",
+      "name": "db.query",
+      "file": "controllers/userController.js",
+      "line": 14
+    },
+    {
+      "id": "sink_002",
+      "type": "COMMAND_EXECUTION",
+      "name": "exec",
+      "file": "controllers/userController.js",
+      "line": 21
+    },
+    {
+      "id": "sink_003",
+      "type": "DANGEROUS_CODE_EXECUTION",
+      "name": "eval",
+      "file": "controllers/userController.js",
+      "line": 27
+    },
+    {
+      "id": "sink_004",
+      "type": "DATABASE",
+      "name": "db.query",
+      "file": "safe/safeExamples.js",
+      "line": 17
+    },
+    {
+      "id": "sink_005",
+      "type": "COMMAND_EXECUTION",
+      "name": "exec",
+      "file": "safe/safeExamples.js",
+      "line": 22
+    }
+  ],
+  "variables": [
+    {
+      "id": "var_001",
+      "name": "registerUserRoutes",
+      "file": "app.js",
+      "line": 1
+    },
+    {
+      "id": "var_002",
+      "name": "app",
+      "file": "app.js",
+      "line": 3
+    },
+    {
+      "id": "var_003",
+      "name": "db",
+      "file": "controllers/userController.js",
+      "line": 1
+    },
+    {
+      "id": "var_004",
+      "name": "id",
+      "file": "controllers/userController.js",
+      "line": 12
+    },
+    {
+      "id": "var_005",
+      "name": "query",
+      "file": "controllers/userController.js",
+      "line": 13
+    },
+    {
+      "id": "var_006",
+      "name": "host",
+      "file": "controllers/userController.js",
+      "line": 19
+    },
+    {
+      "id": "var_007",
+      "name": "command",
+      "file": "controllers/userController.js",
+      "line": 20
+    },
+    {
+      "id": "var_008",
+      "name": "code",
+      "file": "controllers/userController.js",
+      "line": 26
+    },
+    {
+      "id": "var_009",
+      "name": "executeCode",
+      "file": "routes/userRoutes.js",
+      "line": 2
+    },
+    {
+      "id": "var_010",
+      "name": "getUser",
+      "file": "routes/userRoutes.js",
+      "line": 3
+    },
+    {
+      "id": "var_011",
+      "name": "runDiagnostic",
+      "file": "routes/userRoutes.js",
+      "line": 4
+    },
+    {
+      "id": "var_012",
+      "name": "normalCalculation",
+      "file": "routes/userRoutes.js",
+      "line": 7
+    },
+    {
+      "id": "var_013",
+      "name": "safeCommand",
+      "file": "routes/userRoutes.js",
+      "line": 8
+    },
+    {
+      "id": "var_014",
+      "name": "safeLookup",
+      "file": "routes/userRoutes.js",
+      "line": 9
+    },
+    {
+      "id": "var_015",
+      "name": "unrelatedFunctionCall",
+      "file": "routes/userRoutes.js",
+      "line": 10
+    },
+    {
+      "id": "var_016",
+      "name": "db",
+      "file": "safe/safeExamples.js",
+      "line": 1
+    },
+    {
+      "id": "var_017",
+      "name": "id",
+      "file": "safe/safeExamples.js",
+      "line": 16
+    },
+    {
+      "id": "var_018",
+      "name": "label",
+      "file": "safe/safeExamples.js",
+      "line": 27
+    },
+    {
+      "id": "var_019",
+      "name": "value",
+      "file": "safe/safeExamples.js",
+      "line": 33
+    }
+  ],
+  "relationships": [
+    {
+      "from": "source_001",
+      "to": "var_004",
+      "type": "ASSIGNMENT"
+    },
+    {
+      "from": "var_004",
+      "to": "var_005",
+      "type": "VARIABLE_TO_VARIABLE"
+    },
+    {
+      "from": "var_005",
+      "to": "sink_001",
+      "type": "DATA_FLOW"
+    },
+    {
+      "from": "source_002",
+      "to": "var_006",
+      "type": "ASSIGNMENT"
+    },
+    {
+      "from": "var_006",
+      "to": "var_007",
+      "type": "VARIABLE_TO_VARIABLE"
+    },
+    {
+      "from": "var_007",
+      "to": "sink_002",
+      "type": "DATA_FLOW"
+    },
+    {
+      "from": "source_003",
+      "to": "var_008",
+      "type": "ASSIGNMENT"
+    },
+    {
+      "from": "var_008",
+      "to": "sink_003",
+      "type": "DATA_FLOW"
+    },
+    {
+      "from": "source_004",
+      "to": "var_017",
+      "type": "ASSIGNMENT"
+    },
+    {
+      "from": "var_017",
+      "to": "sink_004",
+      "type": "DATA_FLOW"
+    },
+    {
+      "from": "source_005",
+      "to": "var_018",
+      "type": "ASSIGNMENT"
+    },
+    {
+      "from": "source_006",
+      "to": "var_019",
+      "type": "ASSIGNMENT"
+    },
+    {
+      "from": "route_001",
+      "to": "func_005",
+      "type": "ROUTE_TO_FUNCTION"
+    },
+    {
+      "from": "route_002",
+      "to": "func_006",
+      "type": "ROUTE_TO_FUNCTION"
+    },
+    {
+      "from": "route_003",
+      "to": "func_007",
+      "type": "ROUTE_TO_FUNCTION"
+    },
+    {
+      "from": "route_004",
+      "to": "func_012",
+      "type": "ROUTE_TO_FUNCTION"
+    },
+    {
+      "from": "route_005",
+      "to": "func_013",
+      "type": "ROUTE_TO_FUNCTION"
+    },
+    {
+      "from": "route_006",
+      "to": "func_015",
+      "type": "ROUTE_TO_FUNCTION"
+    },
+    {
+      "from": "route_007",
+      "to": "func_014",
+      "type": "ROUTE_TO_FUNCTION"
+    }
+  ],
+  "findings": [
+    {
+      "id": "finding_001",
+      "type": "SQL_INJECTION",
+      "severity": "HIGH",
+      "title": "Potential SQL Injection",
+      "file": "controllers/userController.js",
+      "line": 14,
+      "source": "req.query.id",
+      "sink": "db.query",
+      "route": "GET /users",
+      "evidence": "Tainted HTTP input reaches a database query through string concatenation."
+    },
+    {
+      "id": "finding_002",
+      "type": "COMMAND_INJECTION",
+      "severity": "HIGH",
+      "title": "Potential Command Injection",
+      "file": "controllers/userController.js",
+      "line": 21,
+      "source": "req.query.host",
+      "sink": "exec",
+      "route": "GET /diagnostic",
+      "evidence": "Tainted HTTP input reaches exec through a template literal command."
+    },
+    {
+      "id": "finding_003",
+      "type": "CODE_EXECUTION",
+      "severity": "HIGH",
+      "title": "Potential Dangerous Code Execution",
+      "file": "controllers/userController.js",
+      "line": 27,
+      "source": "req.body.code",
+      "sink": "eval",
+      "route": "POST /execute",
+      "evidence": "Tainted HTTP input reaches eval as executable code."
+    }
+  ],
+  "summary": {
+    "filesAnalyzed": 4,
+    "routesFound": 7,
+    "functionsFound": 15,
+    "sourcesFound": 6,
+    "sinksFound": 5,
+    "findingsFound": 3
+  }
+}

@@ -1,18 +1,31 @@
+const fs = require('node:fs');
 const path = require('node:path');
 
 const { analyzeProject: analyzeRealProject } = require('../../../analyzer/analyzer');
 const { analyzeAttackGraph } = require('../../../graph-engine/src');
 
+const REPO_ROOT = path.resolve(__dirname, '../../../');
 const DEFAULT_PROJECT_PATH = path.resolve(__dirname, '../../demo-vuln-app');
+
+function resolvePath(targetPath) {
+  if (!targetPath) return DEFAULT_PROJECT_PATH;
+  if (path.isAbsolute(targetPath) && fs.existsSync(targetPath)) return targetPath;
+  const inCwd = path.resolve(process.cwd(), targetPath);
+  if (fs.existsSync(inCwd)) return inCwd;
+  const inRepo = path.resolve(REPO_ROOT, targetPath);
+  if (fs.existsSync(inRepo)) return inRepo;
+  return targetPath;
+}
 
 function normalizeProjectInput(input) {
   if (typeof input === 'string') {
-    return { projectPath: input, workingDirectory: process.cwd() };
+    return { projectPath: resolvePath(input), workingDirectory: process.cwd() };
   }
 
   if (input && typeof input === 'object') {
+    const rawPath = input.projectPath || input.path || DEFAULT_PROJECT_PATH;
     return {
-      projectPath: input.projectPath || input.path || DEFAULT_PROJECT_PATH,
+      projectPath: resolvePath(rawPath),
       workingDirectory: input.workingDirectory || process.cwd(),
     };
   }
