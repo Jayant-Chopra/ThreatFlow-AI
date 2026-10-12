@@ -1,3 +1,4 @@
+const fs = require('node:fs');
 const path = require('node:path');
 
 const { analyzeProject: analyzeRealProject } = require('../../../analyzer/analyzer');
@@ -6,18 +7,21 @@ const { analyzeAttackGraph } = require('../../../graph-engine/src');
 const DEFAULT_PROJECT_PATH = path.resolve(__dirname, '../../demo-vuln-app');
 
 function normalizeProjectInput(input) {
+  let targetPath = DEFAULT_PROJECT_PATH;
   if (typeof input === 'string') {
-    return { projectPath: input, workingDirectory: process.cwd() };
+    targetPath = input;
+  } else if (input && typeof input === 'object') {
+    targetPath = input.projectPath || input.path || DEFAULT_PROJECT_PATH;
   }
 
-  if (input && typeof input === 'object') {
-    return {
-      projectPath: input.projectPath || input.path || DEFAULT_PROJECT_PATH,
-      workingDirectory: input.workingDirectory || process.cwd(),
-    };
-  }
+  const candidates = [
+    path.resolve(process.cwd(), targetPath),
+    path.resolve(__dirname, '../../', targetPath),
+    path.resolve(__dirname, '../../../', targetPath),
+  ];
+  const found = candidates.find((c) => fs.existsSync(c)) || candidates[0];
 
-  return { projectPath: DEFAULT_PROJECT_PATH, workingDirectory: process.cwd() };
+  return { projectPath: found, workingDirectory: path.dirname(found) };
 }
 
 function analyzeProject(input) {
