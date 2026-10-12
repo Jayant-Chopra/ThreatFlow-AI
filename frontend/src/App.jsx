@@ -42,15 +42,20 @@ export function App() {
       let projectName = 'Express AST Test Suite';
 
       if (target === 'test-project') {
-        projectPath = 'analyzer/test-project';
+        projectPath = '../analyzer/test-project';
         projectName = 'Express AST Test Suite';
       } else if (target === 'demo-app') {
-        projectPath = 'demo-vuln-app';
+        projectPath = '../demo-vuln-app';
         projectName = 'Demo Vulnerable App';
       }
 
       const result = await scanProject(projectName, projectPath);
-      setScanData(result.data);
+      if (result?.data) {
+        setScanData(result.data);
+        if (result.data.attackPaths?.length > 0) {
+          setActivePathId(result.data.attackPaths[0].id);
+        }
+      }
     } catch (err) {
       console.error('Scan failed:', err);
     } finally {
@@ -269,32 +274,26 @@ export function App() {
       </header>
 
       {/* Main Content Area based on Tab */}
-      <main style={{ flex: 1, minHeight: 0, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
+      <main style={{ flex: 1, minHeight: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
         {activeTab === 'story' && (
-          <AttackStoryFlow
-            attackPaths={scanData?.attackPaths || []}
-            activePathId={activePathId}
-            onSelectPath={setActivePathId}
-            chokepoints={scanData?.chokepoints}
-          />
+          <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+            <AttackStoryFlow
+              attackPaths={scanData?.attackPaths || []}
+              activePathId={activePathId}
+              onSelectPath={setActivePathId}
+              chokepoints={scanData?.chokepoints}
+            />
+          </div>
         )}
 
         {activeTab === 'graph' && (
-          <div style={{ position: 'relative', width: '100%', height: '100%', minHeight: 'calc(100vh - 64px)' }}>
+          <div style={{ position: 'relative', flex: 1, minHeight: 0 }}>
             <div
               style={{
-                position: 'absolute',
-                top: 14,
-                left: 18,
-                zIndex: 10,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 8,
-                background: 'rgba(10, 15, 28, 0.85)',
-                padding: '6px 14px',
-                borderRadius: 8,
-                border: '1px solid var(--border-medium)',
-                backdropFilter: 'blur(8px)',
+                position: 'absolute', top: 14, left: 18, zIndex: 10,
+                display: 'flex', alignItems: 'center', gap: 8,
+                background: 'rgba(10, 15, 28, 0.85)', padding: '6px 14px',
+                borderRadius: 8, border: '1px solid var(--border-medium)', backdropFilter: 'blur(8px)',
               }}
             >
               <Radio size={14} color="#00f2fe" className="pulse-dot" />
@@ -305,7 +304,6 @@ export function App() {
                 • Scroll to zoom • Drag to pan
               </span>
             </div>
-
             <AttackGraphCanvas
               graph={scanData?.graph}
               activePathId={activePathId}
@@ -315,14 +313,18 @@ export function App() {
         )}
 
         {activeTab === 'patch' && (
-          <CodePatchView
-            chokepoints={scanData?.chokepoints}
-            attackPaths={scanData?.attackPaths || []}
-          />
+          <div style={{ flex: 1, overflowY: 'auto' }}>
+            <CodePatchView
+              chokepoints={scanData?.chokepoints}
+              attackPaths={scanData?.attackPaths || []}
+            />
+          </div>
         )}
 
         {activeTab === 'table' && (
-          <FindingsTableView findings={scanData?.findings || []} />
+          <div style={{ flex: 1, overflowY: 'auto' }}>
+            <FindingsTableView findings={scanData?.findings || []} />
+          </div>
         )}
       </main>
     </div>
@@ -330,3 +332,4 @@ export function App() {
 }
 
 export default App;
+

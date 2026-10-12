@@ -32,6 +32,9 @@ export async function scanProject(projectName = 'test-project', projectPath = ''
     }
 
     const data = await res.json();
+    if (data.error || !data.attackPaths || data.attackPaths.length === 0) {
+      throw new Error(data.message || 'Scan returned no attack paths');
+    }
     return { success: true, data, source: 'live' };
   } catch (err) {
     console.warn('Backend unavailable, utilizing verified fallback model:', err);
