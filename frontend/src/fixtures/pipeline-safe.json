@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "1.0",
+  "project": {
+    "name": "pipeline-safe",
+    "path": "safe/safeExamples.js"
+  },
+  "findings": [],
+  "graph": {
+    "nodes": [
+      {
+        "id": "route_safe_1",
+        "type": "routeNode",
+        "position": {
+          "x": 50,
+          "y": 100
+        },
+        "data": {
+          "label": "GET /safe/users",
+          "badge": "ROUTE",
+          "category": "ROUTE",
+          "file": "routes/safeRoutes.js",
+          "line": 10,
+          "location": "routes/safeRoutes.js:10",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": []
+        }
+      },
+      {
+        "id": "func_safe_1",
+        "type": "functionNode",
+        "position": {
+          "x": 260,
+          "y": 100
+        },
+        "data": {
+          "label": "safeLookup()",
+          "badge": "FUNCTION",
+          "category": "FUNCTION",
+          "file": "controllers/safeController.js",
+          "line": 15,
+          "location": "controllers/safeController.js:15",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": []
+        }
+      },
+      {
+        "id": "source_safe_1",
+        "type": "sourceNode",
+        "position": {
+          "x": 470,
+          "y": 100
+        },
+        "data": {
+          "label": "req.query.id",
+          "badge": "SOURCE",
+          "category": "SOURCE",
+          "file": "controllers/safeController.js",
+          "line": 16,
+          "location": "controllers/safeController.js:16",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": []
+        }
+      },
+      {
+        "id": "sink_safe_1",
+        "type": "sinkNode",
+        "position": {
+          "x": 890,
+          "y": 100
+        },
+        "data": {
+          "label": "db.query [Parameterized]",
+          "badge": "SINK",
+          "category": "SINK",
+          "file": "controllers/safeController.js",
+          "line": 20,
+          "location": "controllers/safeController.js:20",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": []
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge_s1",
+        "source": "route_safe_1",
+        "target": "func_safe_1",
+        "label": "handled by",
+        "animated": false,
+        "data": {
+          "onAttackPath": false,
+          "pathIds": []
+        }
+      },
+      {
+        "id": "edge_s2",
+        "source": "func_safe_1",
+        "target": "source_safe_1",
+        "label": "reads",
+        "animated": false,
+        "data": {
+          "onAttackPath": false,
+          "pathIds": []
+        }
+      },
+      {
+        "id": "edge_s3",
+        "source": "source_safe_1",
+        "target": "sink_safe_1",
+        "label": "sanitized flow",
+        "animated": false,
+        "data": {
+          "onAttackPath": false,
+          "pathIds": []
+        }
+      }
+    ]
+  },
+  "attackPaths": [],
+  "chokepoints": {
+    "primary": null,
+    "plan": [],
+    "summary": {
+      "totalPaths": 0,
+      "fixesToBlockAllPaths": 0,
+      "hasSharedChokepoint": false
+    }
+  },
+  "riskSummary": {
+    "totalPaths": 0,
+    "maxRiskScore": 0,
+    "maxScore": 9,
+    "overallPosture": "SAFE",
+    "distribution": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0
+    }
+  }
+}

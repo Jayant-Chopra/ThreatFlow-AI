@@ -1,0 +1,2554 @@
+{
+  "schemaVersion": "1.0",
+  "analyzerSchemaVersion": "1.0",
+  "project": {
+    "name": "test-project",
+    "path": "C:/Users/saksh/OneDrive/Apps/Designer/Desktop/Class Project/ThreatFlow-AI/analyzer/test-project"
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "route_001",
+        "type": "routeNode",
+        "position": {
+          "x": 50,
+          "y": 80
+        },
+        "data": {
+          "label": "GET /users",
+          "badge": "ROUTE",
+          "category": "ROUTE",
+          "file": "routes/userRoutes.js",
+          "line": 14,
+          "location": "routes/userRoutes.js:14",
+          "onAttackPath": true,
+          "isVulnerable": false,
+          "pathIds": [
+            "PATH-001"
+          ],
+          "findingIds": [
+            "finding_001"
+          ],
+          "entity": {
+            "id": "route_001",
+            "method": "GET",
+            "path": "/users",
+            "file": "routes/userRoutes.js",
+            "line": 14,
+            "handler": "getUser"
+          }
+        }
+      },
+      {
+        "id": "route_002",
+        "type": "routeNode",
+        "position": {
+          "x": 50,
+          "y": 190
+        },
+        "data": {
+          "label": "GET /diagnostic",
+          "badge": "ROUTE",
+          "category": "ROUTE",
+          "file": "routes/userRoutes.js",
+          "line": 15,
+          "location": "routes/userRoutes.js:15",
+          "onAttackPath": true,
+          "isVulnerable": false,
+          "pathIds": [
+            "PATH-002"
+          ],
+          "findingIds": [
+            "finding_002"
+          ],
+          "entity": {
+            "id": "route_002",
+            "method": "GET",
+            "path": "/diagnostic",
+            "file": "routes/userRoutes.js",
+            "line": 15,
+            "handler": "runDiagnostic"
+          }
+        }
+      },
+      {
+        "id": "route_003",
+        "type": "routeNode",
+        "position": {
+          "x": 50,
+          "y": 300
+        },
+        "data": {
+          "label": "POST /execute",
+          "badge": "ROUTE",
+          "category": "ROUTE",
+          "file": "routes/userRoutes.js",
+          "line": 16,
+          "location": "routes/userRoutes.js:16",
+          "onAttackPath": true,
+          "isVulnerable": false,
+          "pathIds": [
+            "PATH-003"
+          ],
+          "findingIds": [
+            "finding_003"
+          ],
+          "entity": {
+            "id": "route_003",
+            "method": "POST",
+            "path": "/execute",
+            "file": "routes/userRoutes.js",
+            "line": 16,
+            "handler": "executeCode"
+          }
+        }
+      },
+      {
+        "id": "route_004",
+        "type": "routeNode",
+        "position": {
+          "x": 50,
+          "y": 410
+        },
+        "data": {
+          "label": "GET /safe/users",
+          "badge": "ROUTE",
+          "category": "ROUTE",
+          "file": "routes/userRoutes.js",
+          "line": 17,
+          "location": "routes/userRoutes.js:17",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "route_004",
+            "method": "GET",
+            "path": "/safe/users",
+            "file": "routes/userRoutes.js",
+            "line": 17,
+            "handler": "safeLookup"
+          }
+        }
+      },
+      {
+        "id": "route_005",
+        "type": "routeNode",
+        "position": {
+          "x": 50,
+          "y": 520
+        },
+        "data": {
+          "label": "GET /safe/command",
+          "badge": "ROUTE",
+          "category": "ROUTE",
+          "file": "routes/userRoutes.js",
+          "line": 18,
+          "location": "routes/userRoutes.js:18",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "route_005",
+            "method": "GET",
+            "path": "/safe/command",
+            "file": "routes/userRoutes.js",
+            "line": 18,
+            "handler": "safeCommand"
+          }
+        }
+      },
+      {
+        "id": "route_006",
+        "type": "routeNode",
+        "position": {
+          "x": 50,
+          "y": 630
+        },
+        "data": {
+          "label": "GET /safe/normal",
+          "badge": "ROUTE",
+          "category": "ROUTE",
+          "file": "routes/userRoutes.js",
+          "line": 19,
+          "location": "routes/userRoutes.js:19",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "route_006",
+            "method": "GET",
+            "path": "/safe/normal",
+            "file": "routes/userRoutes.js",
+            "line": 19,
+            "handler": "normalCalculation"
+          }
+        }
+      },
+      {
+        "id": "route_007",
+        "type": "routeNode",
+        "position": {
+          "x": 50,
+          "y": 740
+        },
+        "data": {
+          "label": "GET /safe/unrelated",
+          "badge": "ROUTE",
+          "category": "ROUTE",
+          "file": "routes/userRoutes.js",
+          "line": 20,
+          "location": "routes/userRoutes.js:20",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "route_007",
+            "method": "GET",
+            "path": "/safe/unrelated",
+            "file": "routes/userRoutes.js",
+            "line": 20,
+            "handler": "unrelatedFunctionCall"
+          }
+        }
+      },
+      {
+        "id": "func_001",
+        "type": "functionNode",
+        "position": {
+          "x": 330,
+          "y": 410
+        },
+        "data": {
+          "label": "get()",
+          "badge": "FUNCTION",
+          "category": "FUNCTION",
+          "file": "app.js",
+          "line": 4,
+          "location": "app.js:4",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "func_001",
+            "name": "get",
+            "file": "app.js",
+            "line": 4
+          }
+        }
+      },
+      {
+        "id": "func_002",
+        "type": "functionNode",
+        "position": {
+          "x": 330,
+          "y": 520
+        },
+        "data": {
+          "label": "post()",
+          "badge": "FUNCTION",
+          "category": "FUNCTION",
+          "file": "app.js",
+          "line": 7,
+          "location": "app.js:7",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "func_002",
+            "name": "post",
+            "file": "app.js",
+            "line": 7
+          }
+        }
+      },
+      {
+        "id": "func_003",
+        "type": "functionNode",
+        "position": {
+          "x": 330,
+          "y": 630
+        },
+        "data": {
+          "label": "query()",
+          "badge": "FUNCTION",
+          "category": "FUNCTION",
+          "file": "controllers/userController.js",
+          "line": 2,
+          "location": "controllers/userController.js:2",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "func_003",
+            "name": "query",
+            "file": "controllers/userController.js",
+            "line": 2
+          }
+        }
+      },
+      {
+        "id": "func_004",
+        "type": "functionNode",
+        "position": {
+          "x": 330,
+          "y": 740
+        },
+        "data": {
+          "label": "exec()",
+          "badge": "FUNCTION",
+          "category": "FUNCTION",
+          "file": "controllers/userController.js",
+          "line": 7,
+          "location": "controllers/userController.js:7",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "func_004",
+            "name": "exec",
+            "file": "controllers/userController.js",
+            "line": 7
+          }
+        }
+      },
+      {
+        "id": "func_005",
+        "type": "functionNode",
+        "position": {
+          "x": 330,
+          "y": 80
+        },
+        "data": {
+          "label": "getUser()",
+          "badge": "FUNCTION",
+          "category": "FUNCTION",
+          "file": "controllers/userController.js",
+          "line": 11,
+          "location": "controllers/userController.js:11",
+          "onAttackPath": true,
+          "isVulnerable": false,
+          "pathIds": [
+            "PATH-001"
+          ],
+          "findingIds": [
+            "finding_001"
+          ],
+          "entity": {
+            "id": "func_005",
+            "name": "getUser",
+            "file": "controllers/userController.js",
+            "line": 11
+          }
+        }
+      },
+      {
+        "id": "func_006",
+        "type": "functionNode",
+        "position": {
+          "x": 330,
+          "y": 190
+        },
+        "data": {
+          "label": "runDiagnostic()",
+          "badge": "FUNCTION",
+          "category": "FUNCTION",
+          "file": "controllers/userController.js",
+          "line": 18,
+          "location": "controllers/userController.js:18",
+          "onAttackPath": true,
+          "isVulnerable": false,
+          "pathIds": [
+            "PATH-002"
+          ],
+          "findingIds": [
+            "finding_002"
+          ],
+          "entity": {
+            "id": "func_006",
+            "name": "runDiagnostic",
+            "file": "controllers/userController.js",
+            "line": 18
+          }
+        }
+      },
+      {
+        "id": "func_007",
+        "type": "functionNode",
+        "position": {
+          "x": 330,
+          "y": 300
+        },
+        "data": {
+          "label": "executeCode()",
+          "badge": "FUNCTION",
+          "category": "FUNCTION",
+          "file": "controllers/userController.js",
+          "line": 25,
+          "location": "controllers/userController.js:25",
+          "onAttackPath": true,
+          "isVulnerable": false,
+          "pathIds": [
+            "PATH-003"
+          ],
+          "findingIds": [
+            "finding_003"
+          ],
+          "entity": {
+            "id": "func_007",
+            "name": "executeCode",
+            "file": "controllers/userController.js",
+            "line": 25
+          }
+        }
+      },
+      {
+        "id": "func_008",
+        "type": "functionNode",
+        "position": {
+          "x": 330,
+          "y": 850
+        },
+        "data": {
+          "label": "registerUserRoutes()",
+          "badge": "FUNCTION",
+          "category": "FUNCTION",
+          "file": "routes/userRoutes.js",
+          "line": 13,
+          "location": "routes/userRoutes.js:13",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "func_008",
+            "name": "registerUserRoutes",
+            "file": "routes/userRoutes.js",
+            "line": 13
+          }
+        }
+      },
+      {
+        "id": "func_009",
+        "type": "functionNode",
+        "position": {
+          "x": 330,
+          "y": 960
+        },
+        "data": {
+          "label": "query()",
+          "badge": "FUNCTION",
+          "category": "FUNCTION",
+          "file": "safe/safeExamples.js",
+          "line": 2,
+          "location": "safe/safeExamples.js:2",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "func_009",
+            "name": "query",
+            "file": "safe/safeExamples.js",
+            "line": 2
+          }
+        }
+      },
+      {
+        "id": "func_010",
+        "type": "functionNode",
+        "position": {
+          "x": 330,
+          "y": 1070
+        },
+        "data": {
+          "label": "exec()",
+          "badge": "FUNCTION",
+          "category": "FUNCTION",
+          "file": "safe/safeExamples.js",
+          "line": 7,
+          "location": "safe/safeExamples.js:7",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "func_010",
+            "name": "exec",
+            "file": "safe/safeExamples.js",
+            "line": 7
+          }
+        }
+      },
+      {
+        "id": "func_011",
+        "type": "functionNode",
+        "position": {
+          "x": 330,
+          "y": 1180
+        },
+        "data": {
+          "label": "formatValue()",
+          "badge": "FUNCTION",
+          "category": "FUNCTION",
+          "file": "safe/safeExamples.js",
+          "line": 11,
+          "location": "safe/safeExamples.js:11",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "func_011",
+            "name": "formatValue",
+            "file": "safe/safeExamples.js",
+            "line": 11
+          }
+        }
+      },
+      {
+        "id": "func_012",
+        "type": "functionNode",
+        "position": {
+          "x": 330,
+          "y": 1290
+        },
+        "data": {
+          "label": "safeLookup()",
+          "badge": "FUNCTION",
+          "category": "FUNCTION",
+          "file": "safe/safeExamples.js",
+          "line": 15,
+          "location": "safe/safeExamples.js:15",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "func_012",
+            "name": "safeLookup",
+            "file": "safe/safeExamples.js",
+            "line": 15
+          }
+        }
+      },
+      {
+        "id": "func_013",
+        "type": "functionNode",
+        "position": {
+          "x": 330,
+          "y": 1400
+        },
+        "data": {
+          "label": "safeCommand()",
+          "badge": "FUNCTION",
+          "category": "FUNCTION",
+          "file": "safe/safeExamples.js",
+          "line": 21,
+          "location": "safe/safeExamples.js:21",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "func_013",
+            "name": "safeCommand",
+            "file": "safe/safeExamples.js",
+            "line": 21
+          }
+        }
+      },
+      {
+        "id": "func_014",
+        "type": "functionNode",
+        "position": {
+          "x": 330,
+          "y": 1510
+        },
+        "data": {
+          "label": "unrelatedFunctionCall()",
+          "badge": "FUNCTION",
+          "category": "FUNCTION",
+          "file": "safe/safeExamples.js",
+          "line": 26,
+          "location": "safe/safeExamples.js:26",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "func_014",
+            "name": "unrelatedFunctionCall",
+            "file": "safe/safeExamples.js",
+            "line": 26
+          }
+        }
+      },
+      {
+        "id": "func_015",
+        "type": "functionNode",
+        "position": {
+          "x": 330,
+          "y": 1620
+        },
+        "data": {
+          "label": "normalCalculation()",
+          "badge": "FUNCTION",
+          "category": "FUNCTION",
+          "file": "safe/safeExamples.js",
+          "line": 32,
+          "location": "safe/safeExamples.js:32",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "func_015",
+            "name": "normalCalculation",
+            "file": "safe/safeExamples.js",
+            "line": 32
+          }
+        }
+      },
+      {
+        "id": "source_001",
+        "type": "sourceNode",
+        "position": {
+          "x": 610,
+          "y": 80
+        },
+        "data": {
+          "label": "req.query.id",
+          "badge": "HTTP_INPUT",
+          "category": "SOURCE",
+          "file": "controllers/userController.js",
+          "line": 12,
+          "location": "controllers/userController.js:12",
+          "onAttackPath": true,
+          "isVulnerable": false,
+          "pathIds": [
+            "PATH-001"
+          ],
+          "findingIds": [
+            "finding_001"
+          ],
+          "entity": {
+            "id": "source_001",
+            "type": "HTTP_INPUT",
+            "expression": "req.query.id",
+            "file": "controllers/userController.js",
+            "line": 12
+          }
+        }
+      },
+      {
+        "id": "source_002",
+        "type": "sourceNode",
+        "position": {
+          "x": 610,
+          "y": 190
+        },
+        "data": {
+          "label": "req.query.host",
+          "badge": "HTTP_INPUT",
+          "category": "SOURCE",
+          "file": "controllers/userController.js",
+          "line": 19,
+          "location": "controllers/userController.js:19",
+          "onAttackPath": true,
+          "isVulnerable": false,
+          "pathIds": [
+            "PATH-002"
+          ],
+          "findingIds": [
+            "finding_002"
+          ],
+          "entity": {
+            "id": "source_002",
+            "type": "HTTP_INPUT",
+            "expression": "req.query.host",
+            "file": "controllers/userController.js",
+            "line": 19
+          }
+        }
+      },
+      {
+        "id": "source_003",
+        "type": "sourceNode",
+        "position": {
+          "x": 610,
+          "y": 300
+        },
+        "data": {
+          "label": "req.body.code",
+          "badge": "HTTP_INPUT",
+          "category": "SOURCE",
+          "file": "controllers/userController.js",
+          "line": 26,
+          "location": "controllers/userController.js:26",
+          "onAttackPath": true,
+          "isVulnerable": false,
+          "pathIds": [
+            "PATH-003"
+          ],
+          "findingIds": [
+            "finding_003"
+          ],
+          "entity": {
+            "id": "source_003",
+            "type": "HTTP_INPUT",
+            "expression": "req.body.code",
+            "file": "controllers/userController.js",
+            "line": 26
+          }
+        }
+      },
+      {
+        "id": "source_004",
+        "type": "sourceNode",
+        "position": {
+          "x": 610,
+          "y": 410
+        },
+        "data": {
+          "label": "req.query.id",
+          "badge": "HTTP_INPUT",
+          "category": "SOURCE",
+          "file": "safe/safeExamples.js",
+          "line": 16,
+          "location": "safe/safeExamples.js:16",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "source_004",
+            "type": "HTTP_INPUT",
+            "expression": "req.query.id",
+            "file": "safe/safeExamples.js",
+            "line": 16
+          }
+        }
+      },
+      {
+        "id": "source_005",
+        "type": "sourceNode",
+        "position": {
+          "x": 610,
+          "y": 520
+        },
+        "data": {
+          "label": "req.query.label",
+          "badge": "HTTP_INPUT",
+          "category": "SOURCE",
+          "file": "safe/safeExamples.js",
+          "line": 27,
+          "location": "safe/safeExamples.js:27",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "source_005",
+            "type": "HTTP_INPUT",
+            "expression": "req.query.label",
+            "file": "safe/safeExamples.js",
+            "line": 27
+          }
+        }
+      },
+      {
+        "id": "source_006",
+        "type": "sourceNode",
+        "position": {
+          "x": 610,
+          "y": 630
+        },
+        "data": {
+          "label": "req.query.value",
+          "badge": "HTTP_INPUT",
+          "category": "SOURCE",
+          "file": "safe/safeExamples.js",
+          "line": 33,
+          "location": "safe/safeExamples.js:33",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "source_006",
+            "type": "HTTP_INPUT",
+            "expression": "req.query.value",
+            "file": "safe/safeExamples.js",
+            "line": 33
+          }
+        }
+      },
+      {
+        "id": "var_001",
+        "type": "variableNode",
+        "position": {
+          "x": 890,
+          "y": 630
+        },
+        "data": {
+          "label": "registerUserRoutes",
+          "badge": "VARIABLE",
+          "category": "VARIABLE",
+          "file": "app.js",
+          "line": 1,
+          "location": "app.js:1",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "var_001",
+            "name": "registerUserRoutes",
+            "file": "app.js",
+            "line": 1
+          }
+        }
+      },
+      {
+        "id": "var_002",
+        "type": "variableNode",
+        "position": {
+          "x": 890,
+          "y": 740
+        },
+        "data": {
+          "label": "app",
+          "badge": "VARIABLE",
+          "category": "VARIABLE",
+          "file": "app.js",
+          "line": 3,
+          "location": "app.js:3",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "var_002",
+            "name": "app",
+            "file": "app.js",
+            "line": 3
+          }
+        }
+      },
+      {
+        "id": "var_003",
+        "type": "variableNode",
+        "position": {
+          "x": 890,
+          "y": 850
+        },
+        "data": {
+          "label": "db",
+          "badge": "VARIABLE",
+          "category": "VARIABLE",
+          "file": "controllers/userController.js",
+          "line": 1,
+          "location": "controllers/userController.js:1",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "var_003",
+            "name": "db",
+            "file": "controllers/userController.js",
+            "line": 1
+          }
+        }
+      },
+      {
+        "id": "var_004",
+        "type": "variableNode",
+        "position": {
+          "x": 890,
+          "y": 80
+        },
+        "data": {
+          "label": "id",
+          "badge": "VARIABLE",
+          "category": "VARIABLE",
+          "file": "controllers/userController.js",
+          "line": 12,
+          "location": "controllers/userController.js:12",
+          "onAttackPath": true,
+          "isVulnerable": false,
+          "pathIds": [
+            "PATH-001"
+          ],
+          "findingIds": [
+            "finding_001"
+          ],
+          "entity": {
+            "id": "var_004",
+            "name": "id",
+            "file": "controllers/userController.js",
+            "line": 12
+          }
+        }
+      },
+      {
+        "id": "var_005",
+        "type": "variableNode",
+        "position": {
+          "x": 890,
+          "y": 190
+        },
+        "data": {
+          "label": "query",
+          "badge": "VARIABLE",
+          "category": "VARIABLE",
+          "file": "controllers/userController.js",
+          "line": 13,
+          "location": "controllers/userController.js:13",
+          "onAttackPath": true,
+          "isVulnerable": false,
+          "pathIds": [
+            "PATH-001"
+          ],
+          "findingIds": [
+            "finding_001"
+          ],
+          "entity": {
+            "id": "var_005",
+            "name": "query",
+            "file": "controllers/userController.js",
+            "line": 13
+          }
+        }
+      },
+      {
+        "id": "var_006",
+        "type": "variableNode",
+        "position": {
+          "x": 890,
+          "y": 300
+        },
+        "data": {
+          "label": "host",
+          "badge": "VARIABLE",
+          "category": "VARIABLE",
+          "file": "controllers/userController.js",
+          "line": 19,
+          "location": "controllers/userController.js:19",
+          "onAttackPath": true,
+          "isVulnerable": false,
+          "pathIds": [
+            "PATH-002"
+          ],
+          "findingIds": [
+            "finding_002"
+          ],
+          "entity": {
+            "id": "var_006",
+            "name": "host",
+            "file": "controllers/userController.js",
+            "line": 19
+          }
+        }
+      },
+      {
+        "id": "var_007",
+        "type": "variableNode",
+        "position": {
+          "x": 890,
+          "y": 410
+        },
+        "data": {
+          "label": "command",
+          "badge": "VARIABLE",
+          "category": "VARIABLE",
+          "file": "controllers/userController.js",
+          "line": 20,
+          "location": "controllers/userController.js:20",
+          "onAttackPath": true,
+          "isVulnerable": false,
+          "pathIds": [
+            "PATH-002"
+          ],
+          "findingIds": [
+            "finding_002"
+          ],
+          "entity": {
+            "id": "var_007",
+            "name": "command",
+            "file": "controllers/userController.js",
+            "line": 20
+          }
+        }
+      },
+      {
+        "id": "var_008",
+        "type": "variableNode",
+        "position": {
+          "x": 890,
+          "y": 520
+        },
+        "data": {
+          "label": "code",
+          "badge": "VARIABLE",
+          "category": "VARIABLE",
+          "file": "controllers/userController.js",
+          "line": 26,
+          "location": "controllers/userController.js:26",
+          "onAttackPath": true,
+          "isVulnerable": false,
+          "pathIds": [
+            "PATH-003"
+          ],
+          "findingIds": [
+            "finding_003"
+          ],
+          "entity": {
+            "id": "var_008",
+            "name": "code",
+            "file": "controllers/userController.js",
+            "line": 26
+          }
+        }
+      },
+      {
+        "id": "var_009",
+        "type": "variableNode",
+        "position": {
+          "x": 890,
+          "y": 960
+        },
+        "data": {
+          "label": "executeCode",
+          "badge": "VARIABLE",
+          "category": "VARIABLE",
+          "file": "routes/userRoutes.js",
+          "line": 2,
+          "location": "routes/userRoutes.js:2",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "var_009",
+            "name": "executeCode",
+            "file": "routes/userRoutes.js",
+            "line": 2
+          }
+        }
+      },
+      {
+        "id": "var_010",
+        "type": "variableNode",
+        "position": {
+          "x": 890,
+          "y": 1070
+        },
+        "data": {
+          "label": "getUser",
+          "badge": "VARIABLE",
+          "category": "VARIABLE",
+          "file": "routes/userRoutes.js",
+          "line": 3,
+          "location": "routes/userRoutes.js:3",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "var_010",
+            "name": "getUser",
+            "file": "routes/userRoutes.js",
+            "line": 3
+          }
+        }
+      },
+      {
+        "id": "var_011",
+        "type": "variableNode",
+        "position": {
+          "x": 890,
+          "y": 1180
+        },
+        "data": {
+          "label": "runDiagnostic",
+          "badge": "VARIABLE",
+          "category": "VARIABLE",
+          "file": "routes/userRoutes.js",
+          "line": 4,
+          "location": "routes/userRoutes.js:4",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "var_011",
+            "name": "runDiagnostic",
+            "file": "routes/userRoutes.js",
+            "line": 4
+          }
+        }
+      },
+      {
+        "id": "var_012",
+        "type": "variableNode",
+        "position": {
+          "x": 890,
+          "y": 1290
+        },
+        "data": {
+          "label": "normalCalculation",
+          "badge": "VARIABLE",
+          "category": "VARIABLE",
+          "file": "routes/userRoutes.js",
+          "line": 7,
+          "location": "routes/userRoutes.js:7",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "var_012",
+            "name": "normalCalculation",
+            "file": "routes/userRoutes.js",
+            "line": 7
+          }
+        }
+      },
+      {
+        "id": "var_013",
+        "type": "variableNode",
+        "position": {
+          "x": 890,
+          "y": 1400
+        },
+        "data": {
+          "label": "safeCommand",
+          "badge": "VARIABLE",
+          "category": "VARIABLE",
+          "file": "routes/userRoutes.js",
+          "line": 8,
+          "location": "routes/userRoutes.js:8",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "var_013",
+            "name": "safeCommand",
+            "file": "routes/userRoutes.js",
+            "line": 8
+          }
+        }
+      },
+      {
+        "id": "var_014",
+        "type": "variableNode",
+        "position": {
+          "x": 890,
+          "y": 1510
+        },
+        "data": {
+          "label": "safeLookup",
+          "badge": "VARIABLE",
+          "category": "VARIABLE",
+          "file": "routes/userRoutes.js",
+          "line": 9,
+          "location": "routes/userRoutes.js:9",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "var_014",
+            "name": "safeLookup",
+            "file": "routes/userRoutes.js",
+            "line": 9
+          }
+        }
+      },
+      {
+        "id": "var_015",
+        "type": "variableNode",
+        "position": {
+          "x": 890,
+          "y": 1620
+        },
+        "data": {
+          "label": "unrelatedFunctionCall",
+          "badge": "VARIABLE",
+          "category": "VARIABLE",
+          "file": "routes/userRoutes.js",
+          "line": 10,
+          "location": "routes/userRoutes.js:10",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "var_015",
+            "name": "unrelatedFunctionCall",
+            "file": "routes/userRoutes.js",
+            "line": 10
+          }
+        }
+      },
+      {
+        "id": "var_016",
+        "type": "variableNode",
+        "position": {
+          "x": 890,
+          "y": 1730
+        },
+        "data": {
+          "label": "db",
+          "badge": "VARIABLE",
+          "category": "VARIABLE",
+          "file": "safe/safeExamples.js",
+          "line": 1,
+          "location": "safe/safeExamples.js:1",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "var_016",
+            "name": "db",
+            "file": "safe/safeExamples.js",
+            "line": 1
+          }
+        }
+      },
+      {
+        "id": "var_017",
+        "type": "variableNode",
+        "position": {
+          "x": 890,
+          "y": 1840
+        },
+        "data": {
+          "label": "id",
+          "badge": "VARIABLE",
+          "category": "VARIABLE",
+          "file": "safe/safeExamples.js",
+          "line": 16,
+          "location": "safe/safeExamples.js:16",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "var_017",
+            "name": "id",
+            "file": "safe/safeExamples.js",
+            "line": 16
+          }
+        }
+      },
+      {
+        "id": "var_018",
+        "type": "variableNode",
+        "position": {
+          "x": 890,
+          "y": 1950
+        },
+        "data": {
+          "label": "label",
+          "badge": "VARIABLE",
+          "category": "VARIABLE",
+          "file": "safe/safeExamples.js",
+          "line": 27,
+          "location": "safe/safeExamples.js:27",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "var_018",
+            "name": "label",
+            "file": "safe/safeExamples.js",
+            "line": 27
+          }
+        }
+      },
+      {
+        "id": "var_019",
+        "type": "variableNode",
+        "position": {
+          "x": 890,
+          "y": 2060
+        },
+        "data": {
+          "label": "value",
+          "badge": "VARIABLE",
+          "category": "VARIABLE",
+          "file": "safe/safeExamples.js",
+          "line": 33,
+          "location": "safe/safeExamples.js:33",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "var_019",
+            "name": "value",
+            "file": "safe/safeExamples.js",
+            "line": 33
+          }
+        }
+      },
+      {
+        "id": "sink_001",
+        "type": "sinkNode",
+        "position": {
+          "x": 1170,
+          "y": 80
+        },
+        "data": {
+          "label": "db.query",
+          "badge": "DATABASE",
+          "category": "SINK",
+          "file": "controllers/userController.js",
+          "line": 14,
+          "location": "controllers/userController.js:14",
+          "onAttackPath": true,
+          "isVulnerable": true,
+          "pathIds": [
+            "PATH-001"
+          ],
+          "findingIds": [
+            "finding_001"
+          ],
+          "entity": {
+            "id": "sink_001",
+            "type": "DATABASE",
+            "name": "db.query",
+            "file": "controllers/userController.js",
+            "line": 14
+          }
+        }
+      },
+      {
+        "id": "sink_002",
+        "type": "sinkNode",
+        "position": {
+          "x": 1170,
+          "y": 190
+        },
+        "data": {
+          "label": "exec",
+          "badge": "COMMAND_EXECUTION",
+          "category": "SINK",
+          "file": "controllers/userController.js",
+          "line": 21,
+          "location": "controllers/userController.js:21",
+          "onAttackPath": true,
+          "isVulnerable": true,
+          "pathIds": [
+            "PATH-002"
+          ],
+          "findingIds": [
+            "finding_002"
+          ],
+          "entity": {
+            "id": "sink_002",
+            "type": "COMMAND_EXECUTION",
+            "name": "exec",
+            "file": "controllers/userController.js",
+            "line": 21
+          }
+        }
+      },
+      {
+        "id": "sink_003",
+        "type": "sinkNode",
+        "position": {
+          "x": 1170,
+          "y": 300
+        },
+        "data": {
+          "label": "eval",
+          "badge": "DANGEROUS_CODE_EXECUTION",
+          "category": "SINK",
+          "file": "controllers/userController.js",
+          "line": 27,
+          "location": "controllers/userController.js:27",
+          "onAttackPath": true,
+          "isVulnerable": true,
+          "pathIds": [
+            "PATH-003"
+          ],
+          "findingIds": [
+            "finding_003"
+          ],
+          "entity": {
+            "id": "sink_003",
+            "type": "DANGEROUS_CODE_EXECUTION",
+            "name": "eval",
+            "file": "controllers/userController.js",
+            "line": 27
+          }
+        }
+      },
+      {
+        "id": "sink_004",
+        "type": "sinkNode",
+        "position": {
+          "x": 1170,
+          "y": 410
+        },
+        "data": {
+          "label": "db.query",
+          "badge": "DATABASE",
+          "category": "SINK",
+          "file": "safe/safeExamples.js",
+          "line": 17,
+          "location": "safe/safeExamples.js:17",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "sink_004",
+            "type": "DATABASE",
+            "name": "db.query",
+            "file": "safe/safeExamples.js",
+            "line": 17
+          }
+        }
+      },
+      {
+        "id": "sink_005",
+        "type": "sinkNode",
+        "position": {
+          "x": 1170,
+          "y": 520
+        },
+        "data": {
+          "label": "exec",
+          "badge": "COMMAND_EXECUTION",
+          "category": "SINK",
+          "file": "safe/safeExamples.js",
+          "line": 22,
+          "location": "safe/safeExamples.js:22",
+          "onAttackPath": false,
+          "isVulnerable": false,
+          "pathIds": [],
+          "findingIds": [],
+          "entity": {
+            "id": "sink_005",
+            "type": "COMMAND_EXECUTION",
+            "name": "exec",
+            "file": "safe/safeExamples.js",
+            "line": 22
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge_source_001_var_004_ASSIGNMENT",
+        "source": "source_001",
+        "target": "var_004",
+        "type": "smoothstep",
+        "animated": true,
+        "label": "assigned to",
+        "data": {
+          "relationshipType": "ASSIGNMENT",
+          "derived": false,
+          "onAttackPath": true,
+          "pathIds": [
+            "PATH-001"
+          ]
+        }
+      },
+      {
+        "id": "edge_var_004_var_005_VARIABLE_TO_VARIABLE",
+        "source": "var_004",
+        "target": "var_005",
+        "type": "smoothstep",
+        "animated": true,
+        "label": "propagates to",
+        "data": {
+          "relationshipType": "VARIABLE_TO_VARIABLE",
+          "derived": false,
+          "onAttackPath": true,
+          "pathIds": [
+            "PATH-001"
+          ]
+        }
+      },
+      {
+        "id": "edge_var_005_sink_001_DATA_FLOW",
+        "source": "var_005",
+        "target": "sink_001",
+        "type": "smoothstep",
+        "animated": true,
+        "label": "flows into",
+        "data": {
+          "relationshipType": "DATA_FLOW",
+          "derived": false,
+          "onAttackPath": true,
+          "pathIds": [
+            "PATH-001"
+          ]
+        }
+      },
+      {
+        "id": "edge_source_002_var_006_ASSIGNMENT",
+        "source": "source_002",
+        "target": "var_006",
+        "type": "smoothstep",
+        "animated": true,
+        "label": "assigned to",
+        "data": {
+          "relationshipType": "ASSIGNMENT",
+          "derived": false,
+          "onAttackPath": true,
+          "pathIds": [
+            "PATH-002"
+          ]
+        }
+      },
+      {
+        "id": "edge_var_006_var_007_VARIABLE_TO_VARIABLE",
+        "source": "var_006",
+        "target": "var_007",
+        "type": "smoothstep",
+        "animated": true,
+        "label": "propagates to",
+        "data": {
+          "relationshipType": "VARIABLE_TO_VARIABLE",
+          "derived": false,
+          "onAttackPath": true,
+          "pathIds": [
+            "PATH-002"
+          ]
+        }
+      },
+      {
+        "id": "edge_var_007_sink_002_DATA_FLOW",
+        "source": "var_007",
+        "target": "sink_002",
+        "type": "smoothstep",
+        "animated": true,
+        "label": "flows into",
+        "data": {
+          "relationshipType": "DATA_FLOW",
+          "derived": false,
+          "onAttackPath": true,
+          "pathIds": [
+            "PATH-002"
+          ]
+        }
+      },
+      {
+        "id": "edge_source_003_var_008_ASSIGNMENT",
+        "source": "source_003",
+        "target": "var_008",
+        "type": "smoothstep",
+        "animated": true,
+        "label": "assigned to",
+        "data": {
+          "relationshipType": "ASSIGNMENT",
+          "derived": false,
+          "onAttackPath": true,
+          "pathIds": [
+            "PATH-003"
+          ]
+        }
+      },
+      {
+        "id": "edge_var_008_sink_003_DATA_FLOW",
+        "source": "var_008",
+        "target": "sink_003",
+        "type": "smoothstep",
+        "animated": true,
+        "label": "flows into",
+        "data": {
+          "relationshipType": "DATA_FLOW",
+          "derived": false,
+          "onAttackPath": true,
+          "pathIds": [
+            "PATH-003"
+          ]
+        }
+      },
+      {
+        "id": "edge_source_004_var_017_ASSIGNMENT",
+        "source": "source_004",
+        "target": "var_017",
+        "type": "smoothstep",
+        "animated": false,
+        "label": "assigned to",
+        "data": {
+          "relationshipType": "ASSIGNMENT",
+          "derived": false,
+          "onAttackPath": false,
+          "pathIds": []
+        }
+      },
+      {
+        "id": "edge_var_017_sink_004_DATA_FLOW",
+        "source": "var_017",
+        "target": "sink_004",
+        "type": "smoothstep",
+        "animated": false,
+        "label": "flows into",
+        "data": {
+          "relationshipType": "DATA_FLOW",
+          "derived": false,
+          "onAttackPath": false,
+          "pathIds": []
+        }
+      },
+      {
+        "id": "edge_source_005_var_018_ASSIGNMENT",
+        "source": "source_005",
+        "target": "var_018",
+        "type": "smoothstep",
+        "animated": false,
+        "label": "assigned to",
+        "data": {
+          "relationshipType": "ASSIGNMENT",
+          "derived": false,
+          "onAttackPath": false,
+          "pathIds": []
+        }
+      },
+      {
+        "id": "edge_source_006_var_019_ASSIGNMENT",
+        "source": "source_006",
+        "target": "var_019",
+        "type": "smoothstep",
+        "animated": false,
+        "label": "assigned to",
+        "data": {
+          "relationshipType": "ASSIGNMENT",
+          "derived": false,
+          "onAttackPath": false,
+          "pathIds": []
+        }
+      },
+      {
+        "id": "edge_route_001_func_005_ROUTE_TO_FUNCTION",
+        "source": "route_001",
+        "target": "func_005",
+        "type": "smoothstep",
+        "animated": true,
+        "label": "handled by",
+        "data": {
+          "relationshipType": "ROUTE_TO_FUNCTION",
+          "derived": false,
+          "onAttackPath": true,
+          "pathIds": [
+            "PATH-001"
+          ]
+        }
+      },
+      {
+        "id": "edge_route_002_func_006_ROUTE_TO_FUNCTION",
+        "source": "route_002",
+        "target": "func_006",
+        "type": "smoothstep",
+        "animated": true,
+        "label": "handled by",
+        "data": {
+          "relationshipType": "ROUTE_TO_FUNCTION",
+          "derived": false,
+          "onAttackPath": true,
+          "pathIds": [
+            "PATH-002"
+          ]
+        }
+      },
+      {
+        "id": "edge_route_003_func_007_ROUTE_TO_FUNCTION",
+        "source": "route_003",
+        "target": "func_007",
+        "type": "smoothstep",
+        "animated": true,
+        "label": "handled by",
+        "data": {
+          "relationshipType": "ROUTE_TO_FUNCTION",
+          "derived": false,
+          "onAttackPath": true,
+          "pathIds": [
+            "PATH-003"
+          ]
+        }
+      },
+      {
+        "id": "edge_route_004_func_012_ROUTE_TO_FUNCTION",
+        "source": "route_004",
+        "target": "func_012",
+        "type": "smoothstep",
+        "animated": false,
+        "label": "handled by",
+        "data": {
+          "relationshipType": "ROUTE_TO_FUNCTION",
+          "derived": false,
+          "onAttackPath": false,
+          "pathIds": []
+        }
+      },
+      {
+        "id": "edge_route_005_func_013_ROUTE_TO_FUNCTION",
+        "source": "route_005",
+        "target": "func_013",
+        "type": "smoothstep",
+        "animated": false,
+        "label": "handled by",
+        "data": {
+          "relationshipType": "ROUTE_TO_FUNCTION",
+          "derived": false,
+          "onAttackPath": false,
+          "pathIds": []
+        }
+      },
+      {
+        "id": "edge_route_006_func_015_ROUTE_TO_FUNCTION",
+        "source": "route_006",
+        "target": "func_015",
+        "type": "smoothstep",
+        "animated": false,
+        "label": "handled by",
+        "data": {
+          "relationshipType": "ROUTE_TO_FUNCTION",
+          "derived": false,
+          "onAttackPath": false,
+          "pathIds": []
+        }
+      },
+      {
+        "id": "edge_route_007_func_014_ROUTE_TO_FUNCTION",
+        "source": "route_007",
+        "target": "func_014",
+        "type": "smoothstep",
+        "animated": false,
+        "label": "handled by",
+        "data": {
+          "relationshipType": "ROUTE_TO_FUNCTION",
+          "derived": false,
+          "onAttackPath": false,
+          "pathIds": []
+        }
+      },
+      {
+        "id": "derived_func_006_source_002",
+        "source": "func_006",
+        "target": "source_002",
+        "type": "smoothstep",
+        "animated": true,
+        "label": "reads input",
+        "data": {
+          "relationshipType": "HANDLER_READS_SOURCE",
+          "derived": true,
+          "basis": "finding.route + handler starts before the source in the same file",
+          "onAttackPath": true,
+          "pathIds": [
+            "PATH-002"
+          ]
+        }
+      },
+      {
+        "id": "derived_func_007_source_003",
+        "source": "func_007",
+        "target": "source_003",
+        "type": "smoothstep",
+        "animated": true,
+        "label": "reads input",
+        "data": {
+          "relationshipType": "HANDLER_READS_SOURCE",
+          "derived": true,
+          "basis": "finding.route + handler starts before the source in the same file",
+          "onAttackPath": true,
+          "pathIds": [
+            "PATH-003"
+          ]
+        }
+      },
+      {
+        "id": "derived_func_005_source_001",
+        "source": "func_005",
+        "target": "source_001",
+        "type": "smoothstep",
+        "animated": true,
+        "label": "reads input",
+        "data": {
+          "relationshipType": "HANDLER_READS_SOURCE",
+          "derived": true,
+          "basis": "finding.route + handler starts before the source in the same file",
+          "onAttackPath": true,
+          "pathIds": [
+            "PATH-001"
+          ]
+        }
+      }
+    ]
+  },
+  "attackPaths": [
+    {
+      "id": "PATH-002",
+      "findingId": "finding_002",
+      "vulnerabilityType": "COMMAND_INJECTION",
+      "analyzerSeverity": "HIGH",
+      "title": "Potential Command Injection",
+      "routeResolved": true,
+      "route": {
+        "id": "route_002",
+        "method": "GET",
+        "path": "/diagnostic",
+        "file": "routes/userRoutes.js",
+        "line": 15
+      },
+      "handler": {
+        "id": "func_006",
+        "name": "runDiagnostic",
+        "file": "controllers/userController.js",
+        "line": 18
+      },
+      "source": {
+        "id": "source_002",
+        "type": "HTTP_INPUT",
+        "expression": "req.query.host",
+        "file": "controllers/userController.js",
+        "line": 19
+      },
+      "sink": {
+        "id": "sink_002",
+        "type": "COMMAND_EXECUTION",
+        "name": "exec",
+        "file": "controllers/userController.js",
+        "line": 21
+      },
+      "nodeIds": [
+        "route_002",
+        "func_006",
+        "source_002",
+        "var_006",
+        "var_007",
+        "sink_002"
+      ],
+      "links": [
+        {
+          "from": "route_002",
+          "to": "func_006",
+          "type": "ROUTE_TO_FUNCTION",
+          "derived": false
+        },
+        {
+          "from": "func_006",
+          "to": "source_002",
+          "type": "HANDLER_READS_SOURCE",
+          "derived": true,
+          "basis": "finding.route + handler starts before the source in the same file"
+        },
+        {
+          "from": "source_002",
+          "to": "var_006",
+          "type": "ASSIGNMENT",
+          "derived": false
+        },
+        {
+          "from": "var_006",
+          "to": "var_007",
+          "type": "VARIABLE_TO_VARIABLE",
+          "derived": false
+        },
+        {
+          "from": "var_007",
+          "to": "sink_002",
+          "type": "DATA_FLOW",
+          "derived": false
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "id": "route_002",
+          "category": "ROUTE",
+          "label": "GET /diagnostic",
+          "badge": "ROUTE",
+          "file": "routes/userRoutes.js",
+          "line": 15,
+          "location": "routes/userRoutes.js:15"
+        },
+        {
+          "stepNumber": 2,
+          "id": "func_006",
+          "category": "FUNCTION",
+          "label": "runDiagnostic()",
+          "badge": "FUNCTION",
+          "file": "controllers/userController.js",
+          "line": 18,
+          "location": "controllers/userController.js:18"
+        },
+        {
+          "stepNumber": 3,
+          "id": "source_002",
+          "category": "SOURCE",
+          "label": "req.query.host",
+          "badge": "HTTP_INPUT",
+          "file": "controllers/userController.js",
+          "line": 19,
+          "location": "controllers/userController.js:19"
+        },
+        {
+          "stepNumber": 4,
+          "id": "var_006",
+          "category": "VARIABLE",
+          "label": "host",
+          "badge": "VARIABLE",
+          "file": "controllers/userController.js",
+          "line": 19,
+          "location": "controllers/userController.js:19"
+        },
+        {
+          "stepNumber": 5,
+          "id": "var_007",
+          "category": "VARIABLE",
+          "label": "command",
+          "badge": "VARIABLE",
+          "file": "controllers/userController.js",
+          "line": 20,
+          "location": "controllers/userController.js:20"
+        },
+        {
+          "stepNumber": 6,
+          "id": "sink_002",
+          "category": "SINK",
+          "label": "exec",
+          "badge": "COMMAND_EXECUTION",
+          "file": "controllers/userController.js",
+          "line": 21,
+          "location": "controllers/userController.js:21"
+        }
+      ],
+      "hopCount": 5,
+      "evidence": "Tainted HTTP input reaches exec through a template literal command.",
+      "riskScore": 9,
+      "riskLevel": "CRITICAL",
+      "riskMetrics": {
+        "impact": 3,
+        "impactReason": "User input reaches an OS command (remote command execution).",
+        "exposure": 3,
+        "exposureReason": "Input comes from an HTTP request on a resolved Express route.",
+        "score": 9,
+        "maxScore": 9,
+        "level": "CRITICAL",
+        "formula": "impact (1-3) x exposure (1-3)"
+      }
+    },
+    {
+      "id": "PATH-003",
+      "findingId": "finding_003",
+      "vulnerabilityType": "CODE_EXECUTION",
+      "analyzerSeverity": "HIGH",
+      "title": "Potential Dangerous Code Execution",
+      "routeResolved": true,
+      "route": {
+        "id": "route_003",
+        "method": "POST",
+        "path": "/execute",
+        "file": "routes/userRoutes.js",
+        "line": 16
+      },
+      "handler": {
+        "id": "func_007",
+        "name": "executeCode",
+        "file": "controllers/userController.js",
+        "line": 25
+      },
+      "source": {
+        "id": "source_003",
+        "type": "HTTP_INPUT",
+        "expression": "req.body.code",
+        "file": "controllers/userController.js",
+        "line": 26
+      },
+      "sink": {
+        "id": "sink_003",
+        "type": "DANGEROUS_CODE_EXECUTION",
+        "name": "eval",
+        "file": "controllers/userController.js",
+        "line": 27
+      },
+      "nodeIds": [
+        "route_003",
+        "func_007",
+        "source_003",
+        "var_008",
+        "sink_003"
+      ],
+      "links": [
+        {
+          "from": "route_003",
+          "to": "func_007",
+          "type": "ROUTE_TO_FUNCTION",
+          "derived": false
+        },
+        {
+          "from": "func_007",
+          "to": "source_003",
+          "type": "HANDLER_READS_SOURCE",
+          "derived": true,
+          "basis": "finding.route + handler starts before the source in the same file"
+        },
+        {
+          "from": "source_003",
+          "to": "var_008",
+          "type": "ASSIGNMENT",
+          "derived": false
+        },
+        {
+          "from": "var_008",
+          "to": "sink_003",
+          "type": "DATA_FLOW",
+          "derived": false
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "id": "route_003",
+          "category": "ROUTE",
+          "label": "POST /execute",
+          "badge": "ROUTE",
+          "file": "routes/userRoutes.js",
+          "line": 16,
+          "location": "routes/userRoutes.js:16"
+        },
+        {
+          "stepNumber": 2,
+          "id": "func_007",
+          "category": "FUNCTION",
+          "label": "executeCode()",
+          "badge": "FUNCTION",
+          "file": "controllers/userController.js",
+          "line": 25,
+          "location": "controllers/userController.js:25"
+        },
+        {
+          "stepNumber": 3,
+          "id": "source_003",
+          "category": "SOURCE",
+          "label": "req.body.code",
+          "badge": "HTTP_INPUT",
+          "file": "controllers/userController.js",
+          "line": 26,
+          "location": "controllers/userController.js:26"
+        },
+        {
+          "stepNumber": 4,
+          "id": "var_008",
+          "category": "VARIABLE",
+          "label": "code",
+          "badge": "VARIABLE",
+          "file": "controllers/userController.js",
+          "line": 26,
+          "location": "controllers/userController.js:26"
+        },
+        {
+          "stepNumber": 5,
+          "id": "sink_003",
+          "category": "SINK",
+          "label": "eval",
+          "badge": "DANGEROUS_CODE_EXECUTION",
+          "file": "controllers/userController.js",
+          "line": 27,
+          "location": "controllers/userController.js:27"
+        }
+      ],
+      "hopCount": 4,
+      "evidence": "Tainted HTTP input reaches eval as executable code.",
+      "riskScore": 9,
+      "riskLevel": "CRITICAL",
+      "riskMetrics": {
+        "impact": 3,
+        "impactReason": "User input is executed as JavaScript on the server (remote code execution).",
+        "exposure": 3,
+        "exposureReason": "Input comes from an HTTP request on a resolved Express route.",
+        "score": 9,
+        "maxScore": 9,
+        "level": "CRITICAL",
+        "formula": "impact (1-3) x exposure (1-3)"
+      }
+    },
+    {
+      "id": "PATH-001",
+      "findingId": "finding_001",
+      "vulnerabilityType": "SQL_INJECTION",
+      "analyzerSeverity": "HIGH",
+      "title": "Potential SQL Injection",
+      "routeResolved": true,
+      "route": {
+        "id": "route_001",
+        "method": "GET",
+        "path": "/users",
+        "file": "routes/userRoutes.js",
+        "line": 14
+      },
+      "handler": {
+        "id": "func_005",
+        "name": "getUser",
+        "file": "controllers/userController.js",
+        "line": 11
+      },
+      "source": {
+        "id": "source_001",
+        "type": "HTTP_INPUT",
+        "expression": "req.query.id",
+        "file": "controllers/userController.js",
+        "line": 12
+      },
+      "sink": {
+        "id": "sink_001",
+        "type": "DATABASE",
+        "name": "db.query",
+        "file": "controllers/userController.js",
+        "line": 14
+      },
+      "nodeIds": [
+        "route_001",
+        "func_005",
+        "source_001",
+        "var_004",
+        "var_005",
+        "sink_001"
+      ],
+      "links": [
+        {
+          "from": "route_001",
+          "to": "func_005",
+          "type": "ROUTE_TO_FUNCTION",
+          "derived": false
+        },
+        {
+          "from": "func_005",
+          "to": "source_001",
+          "type": "HANDLER_READS_SOURCE",
+          "derived": true,
+          "basis": "finding.route + handler starts before the source in the same file"
+        },
+        {
+          "from": "source_001",
+          "to": "var_004",
+          "type": "ASSIGNMENT",
+          "derived": false
+        },
+        {
+          "from": "var_004",
+          "to": "var_005",
+          "type": "VARIABLE_TO_VARIABLE",
+          "derived": false
+        },
+        {
+          "from": "var_005",
+          "to": "sink_001",
+          "type": "DATA_FLOW",
+          "derived": false
+        }
+      ],
+      "steps": [
+        {
+          "stepNumber": 1,
+          "id": "route_001",
+          "category": "ROUTE",
+          "label": "GET /users",
+          "badge": "ROUTE",
+          "file": "routes/userRoutes.js",
+          "line": 14,
+          "location": "routes/userRoutes.js:14"
+        },
+        {
+          "stepNumber": 2,
+          "id": "func_005",
+          "category": "FUNCTION",
+          "label": "getUser()",
+          "badge": "FUNCTION",
+          "file": "controllers/userController.js",
+          "line": 11,
+          "location": "controllers/userController.js:11"
+        },
+        {
+          "stepNumber": 3,
+          "id": "source_001",
+          "category": "SOURCE",
+          "label": "req.query.id",
+          "badge": "HTTP_INPUT",
+          "file": "controllers/userController.js",
+          "line": 12,
+          "location": "controllers/userController.js:12"
+        },
+        {
+          "stepNumber": 4,
+          "id": "var_004",
+          "category": "VARIABLE",
+          "label": "id",
+          "badge": "VARIABLE",
+          "file": "controllers/userController.js",
+          "line": 12,
+          "location": "controllers/userController.js:12"
+        },
+        {
+          "stepNumber": 5,
+          "id": "var_005",
+          "category": "VARIABLE",
+          "label": "query",
+          "badge": "VARIABLE",
+          "file": "controllers/userController.js",
+          "line": 13,
+          "location": "controllers/userController.js:13"
+        },
+        {
+          "stepNumber": 6,
+          "id": "sink_001",
+          "category": "SINK",
+          "label": "db.query",
+          "badge": "DATABASE",
+          "file": "controllers/userController.js",
+          "line": 14,
+          "location": "controllers/userController.js:14"
+        }
+      ],
+      "hopCount": 5,
+      "evidence": "Tainted HTTP input reaches a database query through string concatenation.",
+      "riskScore": 6,
+      "riskLevel": "HIGH",
+      "riskMetrics": {
+        "impact": 2,
+        "impactReason": "User input changes a database query (data read/modify), not direct server execution.",
+        "exposure": 3,
+        "exposureReason": "Input comes from an HTTP request on a resolved Express route.",
+        "score": 6,
+        "maxScore": 9,
+        "level": "HIGH",
+        "formula": "impact (1-3) x exposure (1-3)"
+      }
+    }
+  ],
+  "chokepoints": {
+    "primary": {
+      "step": 1,
+      "nodeId": "sink_002",
+      "category": "SINK",
+      "label": "exec",
+      "file": "controllers/userController.js",
+      "line": 21,
+      "location": "controllers/userController.js:21",
+      "pathIds": [
+        "PATH-002"
+      ],
+      "pathsCovered": 1,
+      "riskCovered": 9,
+      "vulnerabilityTypes": [
+        "COMMAND_INJECTION"
+      ],
+      "recommendation": "At controllers/userController.js:21 (exec): Do not pass user input to a shell. Use execFile/spawn with a fixed command and an argument array, and allowlist the accepted values.",
+      "newlyBlockedPathIds": [
+        "PATH-002"
+      ],
+      "cumulativeBlocked": 1,
+      "cumulativePercent": 33.3,
+      "isShared": false
+    },
+    "plan": [
+      {
+        "step": 1,
+        "nodeId": "sink_002",
+        "category": "SINK",
+        "label": "exec",
+        "file": "controllers/userController.js",
+        "line": 21,
+        "location": "controllers/userController.js:21",
+        "pathIds": [
+          "PATH-002"
+        ],
+        "pathsCovered": 1,
+        "riskCovered": 9,
+        "vulnerabilityTypes": [
+          "COMMAND_INJECTION"
+        ],
+        "recommendation": "At controllers/userController.js:21 (exec): Do not pass user input to a shell. Use execFile/spawn with a fixed command and an argument array, and allowlist the accepted values.",
+        "newlyBlockedPathIds": [
+          "PATH-002"
+        ],
+        "cumulativeBlocked": 1,
+        "cumulativePercent": 33.3
+      },
+      {
+        "step": 2,
+        "nodeId": "sink_003",
+        "category": "SINK",
+        "label": "eval",
+        "file": "controllers/userController.js",
+        "line": 27,
+        "location": "controllers/userController.js:27",
+        "pathIds": [
+          "PATH-003"
+        ],
+        "pathsCovered": 1,
+        "riskCovered": 9,
+        "vulnerabilityTypes": [
+          "CODE_EXECUTION"
+        ],
+        "recommendation": "At controllers/userController.js:27 (eval): Remove eval/Function on user input. Parse data with JSON.parse, or map the input to an allowlist of predefined operations.",
+        "newlyBlockedPathIds": [
+          "PATH-003"
+        ],
+        "cumulativeBlocked": 2,
+        "cumulativePercent": 66.7
+      },
+      {
+        "step": 3,
+        "nodeId": "sink_001",
+        "category": "SINK",
+        "label": "db.query",
+        "file": "controllers/userController.js",
+        "line": 14,
+        "location": "controllers/userController.js:14",
+        "pathIds": [
+          "PATH-001"
+        ],
+        "pathsCovered": 1,
+        "riskCovered": 6,
+        "vulnerabilityTypes": [
+          "SQL_INJECTION"
+        ],
+        "recommendation": "At controllers/userController.js:14 (db.query): Use a parameterized query (bind user values as parameters, e.g. db.query(\"... WHERE id = ?\", [id])) instead of building SQL with concatenation or template literals.",
+        "newlyBlockedPathIds": [
+          "PATH-001"
+        ],
+        "cumulativeBlocked": 3,
+        "cumulativePercent": 100
+      }
+    ],
+    "candidates": [
+      {
+        "nodeId": "sink_002",
+        "category": "SINK",
+        "label": "exec",
+        "file": "controllers/userController.js",
+        "line": 21,
+        "location": "controllers/userController.js:21",
+        "pathIds": [
+          "PATH-002"
+        ],
+        "pathsCovered": 1,
+        "riskCovered": 9,
+        "vulnerabilityTypes": [
+          "COMMAND_INJECTION"
+        ],
+        "recommendation": "At controllers/userController.js:21 (exec): Do not pass user input to a shell. Use execFile/spawn with a fixed command and an argument array, and allowlist the accepted values."
+      },
+      {
+        "nodeId": "sink_003",
+        "category": "SINK",
+        "label": "eval",
+        "file": "controllers/userController.js",
+        "line": 27,
+        "location": "controllers/userController.js:27",
+        "pathIds": [
+          "PATH-003"
+        ],
+        "pathsCovered": 1,
+        "riskCovered": 9,
+        "vulnerabilityTypes": [
+          "CODE_EXECUTION"
+        ],
+        "recommendation": "At controllers/userController.js:27 (eval): Remove eval/Function on user input. Parse data with JSON.parse, or map the input to an allowlist of predefined operations."
+      },
+      {
+        "nodeId": "source_002",
+        "category": "SOURCE",
+        "label": "req.query.host",
+        "file": "controllers/userController.js",
+        "line": 19,
+        "location": "controllers/userController.js:19",
+        "pathIds": [
+          "PATH-002"
+        ],
+        "pathsCovered": 1,
+        "riskCovered": 9,
+        "vulnerabilityTypes": [
+          "COMMAND_INJECTION"
+        ],
+        "recommendation": "At controllers/userController.js:19: strictly validate \"req.query.host\" (allowlist or type conversion such as Number(...)) before it is used. This blocks the paths only if the validated value is safe for every downstream sink (COMMAND_INJECTION); fixing each sink is still recommended."
+      },
+      {
+        "nodeId": "source_003",
+        "category": "SOURCE",
+        "label": "req.body.code",
+        "file": "controllers/userController.js",
+        "line": 26,
+        "location": "controllers/userController.js:26",
+        "pathIds": [
+          "PATH-003"
+        ],
+        "pathsCovered": 1,
+        "riskCovered": 9,
+        "vulnerabilityTypes": [
+          "CODE_EXECUTION"
+        ],
+        "recommendation": "At controllers/userController.js:26: strictly validate \"req.body.code\" (allowlist or type conversion such as Number(...)) before it is used. This blocks the paths only if the validated value is safe for every downstream sink (CODE_EXECUTION); fixing each sink is still recommended."
+      },
+      {
+        "nodeId": "var_006",
+        "category": "VARIABLE",
+        "label": "host",
+        "file": "controllers/userController.js",
+        "line": 19,
+        "location": "controllers/userController.js:19",
+        "pathIds": [
+          "PATH-002"
+        ],
+        "pathsCovered": 1,
+        "riskCovered": 9,
+        "vulnerabilityTypes": [
+          "COMMAND_INJECTION"
+        ],
+        "recommendation": "At controllers/userController.js:19: strictly validate \"host\" (allowlist or type conversion such as Number(...)) before it is used. This blocks the paths only if the validated value is safe for every downstream sink (COMMAND_INJECTION); fixing each sink is still recommended."
+      },
+      {
+        "nodeId": "var_007",
+        "category": "VARIABLE",
+        "label": "command",
+        "file": "controllers/userController.js",
+        "line": 20,
+        "location": "controllers/userController.js:20",
+        "pathIds": [
+          "PATH-002"
+        ],
+        "pathsCovered": 1,
+        "riskCovered": 9,
+        "vulnerabilityTypes": [
+          "COMMAND_INJECTION"
+        ],
+        "recommendation": "At controllers/userController.js:20: strictly validate \"command\" (allowlist or type conversion such as Number(...)) before it is used. This blocks the paths only if the validated value is safe for every downstream sink (COMMAND_INJECTION); fixing each sink is still recommended."
+      },
+      {
+        "nodeId": "var_008",
+        "category": "VARIABLE",
+        "label": "code",
+        "file": "controllers/userController.js",
+        "line": 26,
+        "location": "controllers/userController.js:26",
+        "pathIds": [
+          "PATH-003"
+        ],
+        "pathsCovered": 1,
+        "riskCovered": 9,
+        "vulnerabilityTypes": [
+          "CODE_EXECUTION"
+        ],
+        "recommendation": "At controllers/userController.js:26: strictly validate \"code\" (allowlist or type conversion such as Number(...)) before it is used. This blocks the paths only if the validated value is safe for every downstream sink (CODE_EXECUTION); fixing each sink is still recommended."
+      },
+      {
+        "nodeId": "sink_001",
+        "category": "SINK",
+        "label": "db.query",
+        "file": "controllers/userController.js",
+        "line": 14,
+        "location": "controllers/userController.js:14",
+        "pathIds": [
+          "PATH-001"
+        ],
+        "pathsCovered": 1,
+        "riskCovered": 6,
+        "vulnerabilityTypes": [
+          "SQL_INJECTION"
+        ],
+        "recommendation": "At controllers/userController.js:14 (db.query): Use a parameterized query (bind user values as parameters, e.g. db.query(\"... WHERE id = ?\", [id])) instead of building SQL with concatenation or template literals."
+      },
+      {
+        "nodeId": "source_001",
+        "category": "SOURCE",
+        "label": "req.query.id",
+        "file": "controllers/userController.js",
+        "line": 12,
+        "location": "controllers/userController.js:12",
+        "pathIds": [
+          "PATH-001"
+        ],
+        "pathsCovered": 1,
+        "riskCovered": 6,
+        "vulnerabilityTypes": [
+          "SQL_INJECTION"
+        ],
+        "recommendation": "At controllers/userController.js:12: strictly validate \"req.query.id\" (allowlist or type conversion such as Number(...)) before it is used. This blocks the paths only if the validated value is safe for every downstream sink (SQL_INJECTION); fixing each sink is still recommended."
+      },
+      {
+        "nodeId": "var_004",
+        "category": "VARIABLE",
+        "label": "id",
+        "file": "controllers/userController.js",
+        "line": 12,
+        "location": "controllers/userController.js:12",
+        "pathIds": [
+          "PATH-001"
+        ],
+        "pathsCovered": 1,
+        "riskCovered": 6,
+        "vulnerabilityTypes": [
+          "SQL_INJECTION"
+        ],
+        "recommendation": "At controllers/userController.js:12: strictly validate \"id\" (allowlist or type conversion such as Number(...)) before it is used. This blocks the paths only if the validated value is safe for every downstream sink (SQL_INJECTION); fixing each sink is still recommended."
+      },
+      {
+        "nodeId": "var_005",
+        "category": "VARIABLE",
+        "label": "query",
+        "file": "controllers/userController.js",
+        "line": 13,
+        "location": "controllers/userController.js:13",
+        "pathIds": [
+          "PATH-001"
+        ],
+        "pathsCovered": 1,
+        "riskCovered": 6,
+        "vulnerabilityTypes": [
+          "SQL_INJECTION"
+        ],
+        "recommendation": "At controllers/userController.js:13: strictly validate \"query\" (allowlist or type conversion such as Number(...)) before it is used. This blocks the paths only if the validated value is safe for every downstream sink (SQL_INJECTION); fixing each sink is still recommended."
+      }
+    ],
+    "summary": {
+      "totalPaths": 3,
+      "fixesToBlockAllPaths": 3,
+      "hasSharedChokepoint": false
+    }
+  },
+  "riskSummary": {
+    "totalPaths": 3,
+    "maxRiskScore": 9,
+    "maxScore": 9,
+    "overallPosture": "CRITICAL",
+    "distribution": {
+      "critical": 2,
+      "high": 1,
+      "medium": 0,
+      "low": 0
+    }
+  },
+  "diagnostics": {
+    "unresolvedFindings": [],
+    "droppedRelationships": 0
+  },
+  "summary": {
+    "nodes": 52,
+    "edges": 22,
+    "derivedEdges": 3,
+    "findings": 3,
+    "attackPaths": 3,
+    "unresolvedFindings": 0
+  }
+}

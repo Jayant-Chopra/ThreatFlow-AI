@@ -1,9 +1,48 @@
 import React, { useState } from 'react';
-import { ShieldCheck, Copy, Check, FileCode, CheckCircle2, AlertTriangle, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Copy, Check } from 'lucide-react';
 
-export function CodePatchView({ chokepoints, attackPaths = [] }) {
+export function CodePatchView({ chokepoints: _chokepoints, attackPaths = [] }) {
   const [copied, setCopied] = useState(false);
-  const primary = chokepoints?.primary;
+
+  if (attackPaths && attackPaths.length === 0) {
+    return (
+      <div style={{ padding: '40px 32px', display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+        <div
+          style={{
+            maxWidth: 580,
+            textAlign: 'center',
+            padding: '36px 32px',
+            background: 'rgba(15, 23, 42, 0.85)',
+            border: '1px solid rgba(16, 185, 129, 0.35)',
+            borderRadius: 16,
+            boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
+          }}
+        >
+          <div
+            style={{
+              width: 52,
+              height: 52,
+              borderRadius: 12,
+              background: 'rgba(16, 185, 129, 0.15)',
+              border: '1px solid rgba(16, 185, 129, 0.4)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 16px',
+            }}
+          >
+            <ShieldCheck size={28} color="#10b981" />
+          </div>
+          <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#f8fafc', marginBottom: 8 }}>
+            No Code Remediation Required
+          </h3>
+          <p style={{ fontSize: '0.85rem', color: '#94a3b8', lineHeight: 1.6 }}>
+            The current project passed AST security checks with 0 attack paths. All database queries, shell processes, and dynamic execution sinks are properly defended.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   const handleCopy = (code) => {
     navigator.clipboard.writeText(code);

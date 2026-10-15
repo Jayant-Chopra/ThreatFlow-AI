@@ -8,6 +8,7 @@ import {
   useEdgesState,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
+import { ShieldCheck } from 'lucide-react';
 import { CyberNode } from './CyberNode';
 
 const nodeTypes = {
@@ -29,9 +30,10 @@ export function AttackGraphCanvas({ graph, activePathId, onSelectNode }) {
     const rawEdges = graph?.edges || [];
 
     const computedNodes = rawNodes.map((n) => {
-      const isHighlighted = activePathId
-        ? (n.data?.pathIds || []).includes(activePathId)
-        : n.data?.onAttackPath;
+      const nodePathIds = n.data?.pathIds || [];
+      const isOnActivePath = activePathId ? nodePathIds.includes(activePathId) : false;
+      const isHighlighted = activePathId ? isOnActivePath : n.data?.onAttackPath;
+      const isDimmed = activePathId ? !isOnActivePath : false;
 
       return {
         ...n,
@@ -39,22 +41,24 @@ export function AttackGraphCanvas({ graph, activePathId, onSelectNode }) {
         data: {
           ...n.data,
           isHighlighted,
+          isDimmed,
         },
       };
     });
 
     const computedEdges = rawEdges.map((e) => {
-      const isPathEdge = activePathId
-        ? (e.data?.pathIds || []).includes(activePathId)
-        : e.data?.onAttackPath;
+      const edgePathIds = e.data?.pathIds || [];
+      const isOnActivePath = activePathId ? edgePathIds.includes(activePathId) : false;
+      const isAnimated = activePathId ? isOnActivePath : e.data?.onAttackPath;
+      const isDimmed = activePathId ? !isOnActivePath : false;
 
       return {
         ...e,
-        animated: isPathEdge,
+        animated: !!isAnimated,
         style: {
-          stroke: isPathEdge ? '#ef4444' : '#334155',
-          strokeWidth: isPathEdge ? 2.5 : 1.5,
-          opacity: activePathId && !isPathEdge ? 0.25 : 1,
+          stroke: isOnActivePath ? '#ef4444' : isAnimated ? '#f87171' : '#334155',
+          strokeWidth: isOnActivePath ? 2.5 : isAnimated ? 2 : 1.5,
+          opacity: isDimmed ? 0.15 : 1,
         },
       };
     });
@@ -72,8 +76,44 @@ export function AttackGraphCanvas({ graph, activePathId, onSelectNode }) {
     [onSelectNode]
   );
 
+  if (!graph?.nodes || graph.nodes.length === 0) {
+    return (
+      <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#090d16', padding: 24 }}>
+        <div style={{
+          maxWidth: 480,
+          textAlign: 'center',
+          padding: '36px 32px',
+          background: 'rgba(15, 23, 42, 0.85)',
+          border: '1px solid rgba(16, 185, 129, 0.35)',
+          borderRadius: 16,
+          boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
+        }}>
+          <div style={{
+            width: 52,
+            height: 52,
+            borderRadius: 12,
+            background: 'rgba(16, 185, 129, 0.15)',
+            border: '1px solid rgba(16, 185, 129, 0.4)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            margin: '0 auto 16px',
+          }}>
+            <ShieldCheck size={28} color="#10b981" />
+          </div>
+          <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#f8fafc', marginBottom: 8 }}>
+            No Graph Vulnerabilities Found
+          </h3>
+          <p style={{ fontSize: '0.84rem', color: '#94a3b8', lineHeight: 1.6 }}>
+            No source-to-sink taint data flow paths or vulnerable AST relationships were found in this project.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="graph-canvas-container">
+    <div style={{ width: '100%', height: '100%', position: 'relative' }}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -82,7 +122,7 @@ export function AttackGraphCanvas({ graph, activePathId, onSelectNode }) {
         nodeTypes={nodeTypes}
         onNodeClick={handleNodeClick}
         fitView
-        fitViewOptions={{ padding: 0.2 }}
+        fitViewOptions={{ padding: 0.15 }}
         minZoom={0.2}
         maxZoom={2.5}
       >
@@ -90,12 +130,15 @@ export function AttackGraphCanvas({ graph, activePathId, onSelectNode }) {
         <Controls />
         <MiniMap
           nodeColor={(node) => {
-            if (node.data?.category === 'SINK') return '#ef4444';
-            if (node.data?.category === 'ROUTE') return '#00f2fe';
-            if (node.data?.category === 'SOURCE') return '#f59e0b';
-            return '#475569';
+            const cat = node.data?.category;
+            if (cat === 'SINK') return '#ef4444';
+            if (cat === 'ROUTE') return '#a855f7';
+            if (cat === 'SOURCE') return '#f59e0b';
+            if (cat === 'VARIABLE') return '#06b6d4';
+            return '#64748b';
           }}
-          maskColor="rgba(6, 9, 17, 0.75)"
+          maskColor="rgba(9, 13, 22, 0.85)"
+          style={{ background: '#090d16', border: '1px solid rgba(255, 255, 255, 0.1)' }}
         />
       </ReactFlow>
     </div>

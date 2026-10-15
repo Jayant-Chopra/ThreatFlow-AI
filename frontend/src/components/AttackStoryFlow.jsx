@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import {
-  Globe, Code2, LogIn, AlertOctagon, ArrowRight, Zap, Shield, ShieldOff, Database, Terminal, Info, CheckCircle
+  Globe, Code2, LogIn, AlertOctagon, ArrowRight, Zap, ShieldCheck, Database, Terminal, Info
 } from 'lucide-react';
+import { ChokepointPanel } from './ChokepointPanel';
 
 const STEP_ICONS = { ROUTE: Globe, FUNCTION: Code2, SOURCE: LogIn, VARIABLE: Code2, SINK: AlertOctagon };
 const STEP_COLORS = {
@@ -37,11 +38,60 @@ export function AttackStoryFlow({ attackPaths = [], activePathId, onSelectPath, 
   const [selectedStepIdx, setSelectedStepIdx] = useState(0);
   const currentPath = attackPaths.find((p) => p.id === activePathId) || attackPaths[0];
 
-  if (!currentPath) {
+  if (!attackPaths || attackPaths.length === 0 || !currentPath) {
     return (
-      <div style={{ padding: 60, textAlign: 'center', color: '#64748b' }}>
-        <Shield size={48} style={{ marginBottom: 16, opacity: 0.3 }} />
-        <p>No scan data yet. Click "Run Scan" to begin.</p>
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 24px' }}>
+        <div
+          style={{
+            maxWidth: 620,
+            width: '100%',
+            background: 'rgba(15, 23, 42, 0.85)',
+            border: '1px solid rgba(16, 185, 129, 0.35)',
+            boxShadow: '0 12px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(16, 185, 129, 0.12)',
+            borderRadius: 16,
+            padding: '36px 32px',
+            textAlign: 'center',
+          }}
+        >
+          <div
+            style={{
+              width: 56,
+              height: 56,
+              borderRadius: 12,
+              background: 'rgba(16, 185, 129, 0.15)',
+              border: '1px solid rgba(16, 185, 129, 0.4)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 16px',
+            }}
+          >
+            <ShieldCheck size={32} color="#10b981" />
+          </div>
+
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#f8fafc', marginBottom: 8 }}>
+            Clean Pipeline Verified — 0 Attack Paths Detected
+          </h2>
+
+          <p style={{ fontSize: '0.86rem', color: '#94a3b8', lineHeight: 1.6, marginBottom: 24 }}>
+            The AST taint analysis completed successfully. All data flows and HTTP input sources in this project are properly sanitized, parameterized, or do not reach recognized dangerous execution sinks.
+          </p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, textAlign: 'center' }}>
+            <div style={{ padding: '12px', background: 'rgba(255,255,255,0.03)', borderRadius: 8, border: '1px solid rgba(255,255,255,0.06)' }}>
+              <div style={{ fontSize: '0.68rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 700 }}>Security Posture</div>
+              <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#34d399', marginTop: 4 }}>SAFE / CLEAN</div>
+            </div>
+            <div style={{ padding: '12px', background: 'rgba(255,255,255,0.03)', borderRadius: 8, border: '1px solid rgba(255,255,255,0.06)' }}>
+              <div style={{ fontSize: '0.68rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 700 }}>Exploit Chains</div>
+              <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#f8fafc', marginTop: 4 }}>0 Paths</div>
+            </div>
+            <div style={{ padding: '12px', background: 'rgba(255,255,255,0.03)', borderRadius: 8, border: '1px solid rgba(255,255,255,0.06)' }}>
+              <div style={{ fontSize: '0.68rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 700 }}>Chokepoint Fixes</div>
+              <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#34d399', marginTop: 4 }}>0 Needed</div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -245,24 +295,8 @@ export function AttackStoryFlow({ attackPaths = [], activePathId, onSelectPath, 
             )}
           </div>
 
-          {/* Chokepoint Fix */}
-          {chokepoints?.primary && (
-            <div style={{ background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: 12, padding: 16 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-                <CheckCircle size={15} color="#10b981" />
-                <span style={{ fontWeight: 700, color: '#34d399', fontSize: '0.82rem' }}>Primary Chokepoint Fix</span>
-              </div>
-              <div className="mono" style={{ fontSize: '0.8rem', color: '#f87171', fontWeight: 700, marginBottom: 6 }}>
-                {chokepoints.primary.label} ({chokepoints.primary.category})
-              </div>
-              <div className="mono" style={{ fontSize: '0.72rem', color: '#94a3b8', marginBottom: 8 }}>
-                {chokepoints.primary.location}
-              </div>
-              <p style={{ fontSize: '0.76rem', color: '#94a3b8', lineHeight: 1.5, borderLeft: '2px solid #10b981', paddingLeft: 8 }}>
-                {chokepoints.primary.recommendation}
-              </p>
-            </div>
-          )}
+          {/* Chokepoint Remediation Card */}
+          <ChokepointPanel chokepoints={chokepoints} />
 
           {/* All Paths Summary */}
           <div style={{ background: 'rgba(15,23,42,0.8)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: 16, flex: 1 }}>

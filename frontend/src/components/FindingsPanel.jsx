@@ -1,19 +1,13 @@
 import React, { useRef } from 'react';
 import {
-  FileCode,
-  ShieldAlert,
   Upload,
   Play,
-  CheckCircle,
-  Database,
-  Terminal,
   Activity,
-  Layers,
 } from 'lucide-react';
 
 export function FindingsPanel({
   findings = [],
-  summary,
+  summary: _summary,
   isScanning,
   onRunScan,
   onUploadFile,

@@ -1,90 +1,120 @@
-import fallbackData from './fixtureData.json';
-
 const API_BASE = '/api';
 
 /**
- * Checks if Jayant's backend server is running on :3001
+ * Checks if the backend server is reachable on :3001
  */
 export async function checkBackendHealth() {
   try {
-    const res = await fetch(`${API_BASE}/health`, { method: 'GET', signal: AbortSignal.timeout(2500) });
+    const res = await fetch(`${API_BASE}/health`, { method: 'GET', signal: AbortSignal.timeout(2000) });
     if (!res.ok) return false;
     const data = await res.json();
     return data.status === 'ok';
-  } catch (err) {
+  } catch {
     return false;
   }
 }
 
 /**
- * Initiates an AST scan on a project path
+ * Initiates an AST scan on a project path against the live backend.
+ * Never silently substitutes fake fixture data on failure.
  */
-export async function scanProject(projectName = 'test-project', projectPath = '') {
+export async function scanProject(projectKey = 'pipeline-vulnerable', customPath = '') {
+  // Determine backend projectPath
+  let projectPath = customPath;
+  let projectName = projectKey;
+
+  if (!projectPath) {
+    if (projectKey === 'pipeline-vulnerable') {
+      projectPath = '../analyzer/test-project';
+      projectName = 'pipeline-vulnerable';
+    } else if (projectKey === 'test-project') {
+      projectPath = '../analyzer/test-project';
+      projectName = 'test-project';
+    } else if (projectKey === 'demo-vuln-app' || projectKey === 'demo-app') {
+      // Demo Vulnerable App is located inside backend/demo-vuln-app
+      projectPath = 'demo-vuln-app';
+      projectName = 'demo-vuln-app';
+    } else if (projectKey === 'pipeline-safe') {
+      // Clean safe subproject in test-project
+      projectPath = '../analyzer/test-project/safe';
+      projectName = 'pipeline-safe';
+    }
+  }
+
   try {
     const res = await fetch(`${API_BASE}/scan`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ projectName, projectPath }),
+      signal: AbortSignal.timeout(8000),
     });
 
+    const data = await res.json().catch(() => null);
+
     if (!res.ok) {
-      throw new Error(`Scan API error: ${res.statusText}`);
+      const errorMsg = data?.message || data?.error || `Scan failed with status ${res.status}: ${res.statusText}`;
+      throw new Error(errorMsg);
     }
 
-    const data = await res.json();
-    if (data.error || !data.attackPaths || data.attackPaths.length === 0) {
-      throw new Error(data.message || 'Scan returned no attack paths');
+    if (!data) {
+      throw new Error('Backend returned an empty response.');
     }
+
+    if (data.error) {
+      throw new Error(data.message || data.error || 'Scan failed.');
+    }
+
     return { success: true, data, source: 'live' };
   } catch (err) {
-    console.warn('Backend unavailable, utilizing verified fallback model:', err);
-    return {
-      success: true,
-      data: {
-        id: 'fallback-eval-scan',
-        status: 'completed',
-        summary: 'Scan completed using verified Phase 1 AST Engine model',
-        findings: fallbackData.findings || [],
-        graph: fallbackData.graph || { nodes: [], edges: [] },
-        attackPaths: fallbackData.attackPaths || [],
-        riskSummary: fallbackData.riskSummary || {
-          totalPaths: 3,
-          overallPosture: 'CRITICAL',
-          distribution: { critical: 2, high: 1, medium: 0, low: 0 },
-        },
-        chokepoints: fallbackData.chokepoints || {
-          primary: {
-            label: 'exec',
-            location: 'controllers/userController.js:21',
-            pathsCovered: 1,
-            recommendation: 'Do not pass user input to a shell. Use execFile/spawn with fixed arguments.',
-          },
-          plan: [],
-        },
-      },
-      source: 'offline_fallback',
-    };
+    let message = err.message;
+    if (err.name === 'TimeoutError' || err.name === 'AbortError') {
+      message = 'Scan request timed out. The backend took too long to complete the AST analysis.';
+    } else if (err.message === 'Failed to fetch' || err.message.includes('fetch failed')) {
+      message = 'Cannot connect to backend server at http://localhost:3001. Please make sure the backend server is running.';
+    }
+    throw new Error(message);
   }
 }
 
 /**
- * Uploads a ZIP or JS file via Multer endpoint
+ * Uploads a ZIP or JS file via Multer endpoint to the backend.
+ * Never silently substitutes fake fixture data on failure.
  */
 export async function uploadAndScan(file, projectName) {
   const formData = new FormData();
   formData.append('project', file);
   if (projectName) formData.append('projectName', projectName);
 
-  const res = await fetch(`${API_BASE}/upload`, {
-    method: 'POST',
-    body: formData,
-  });
+  try {
+    const res = await fetch(`${API_BASE}/upload`, {
+      method: 'POST',
+      body: formData,
+      signal: AbortSignal.timeout(15000),
+    });
 
-  if (!res.ok) {
-    const errData = await res.json().catch(() => ({}));
-    throw new Error(errData.message || errData.error || `Upload error: ${res.statusText}`);
+    const data = await res.json().catch(() => null);
+
+    if (!res.ok) {
+      const errorMsg = data?.message || data?.error || `Upload failed with status ${res.status}: ${res.statusText}`;
+      throw new Error(errorMsg);
+    }
+
+    if (!data) {
+      throw new Error('Backend returned an empty response.');
+    }
+
+    if (data.error) {
+      throw new Error(data.message || data.error || 'Upload scan failed.');
+    }
+
+    return { success: true, data, source: 'live' };
+  } catch (err) {
+    let message = err.message;
+    if (err.name === 'TimeoutError' || err.name === 'AbortError') {
+      message = 'Upload scan timed out. The uploaded archive may be too large or processing took too long.';
+    } else if (err.message === 'Failed to fetch' || err.message.includes('fetch failed')) {
+      message = 'Cannot connect to backend server at http://localhost:3001. Please make sure the backend server is running.';
+    }
+    throw new Error(message);
   }
-
-  const data = await res.json();
-  return { success: true, data, source: 'live' };
 }
